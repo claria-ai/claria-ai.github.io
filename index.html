@@ -1,0 +1,322 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Claria &mdash; HIPAA-Compliant AI for Clinical Practitioners</title>
+  <meta name="description" content="Claria is a desktop application that helps psychologists, BCBAs, and clinical practitioners run HIPAA-compliant AI workflows using AWS Bedrock. Generate structured clinical reports on your own data, in your own cloud.">
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Hero -->
+  <header class="hero">
+    <div class="container">
+      <h1>Claria</h1>
+      <p class="tagline">
+        A new way to run HIPAA-compliant, powerful AI workflows. Leverage the Cloud
+        while doing your work in a comfortable desktop application.
+      </p>
+      <p class="tagline" style="margin-top: 0; font-size: 1.05rem;">
+        Claria helps you configure the cloud to run your own inference on your own data.
+      </p>
+      <a href="#getting-started" class="cta">Get Started</a>
+    </div>
+  </header>
+
+  <!-- Who is Claria for? -->
+  <section id="audience">
+    <div class="container">
+      <h2>Who is Claria for?</h2>
+      <p>
+        Claria is built for <strong>psychologists</strong>, <strong>BCBAs</strong>,
+        and <strong>clinical practitioners</strong> who write evaluation reports.
+        If your day involves psychological evaluations, behavioral assessments,
+        or progress reports, Claria was designed with your workflow in mind.
+      </p>
+      <p>
+        This is not a generic AI tool. Claria understands the specific instruments
+        you use and generates structured clinical reports that match your practice.
+      </p>
+    </div>
+  </section>
+
+  <!-- What Claria is NOT -->
+  <section id="not">
+    <div class="container">
+      <h2>What Claria is not</h2>
+      <ul class="not-list">
+        <li><strong>Not a SaaS</strong> &mdash; nothing is hosted for you. The app runs on your machine.</li>
+        <li><strong>Not a middleman</strong> &mdash; Claria's developers never see your data.</li>
+        <li><strong>Not a chatbot</strong> &mdash; it produces structured clinical reports, not freeform conversation.</li>
+        <li><strong>Not a subscription</strong> &mdash; you pay AWS directly for what you use. No recurring Claria fee.</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- What is AWS -->
+  <section id="aws">
+    <div class="container">
+      <h2>What is AWS?</h2>
+      <p>
+        Amazon Web Services is a vast constellation of paid computing services.
+        Think of it like a supermarket or home improvement superstore. The products
+        inside the store are varied, but whatever you choose to use is tallied up and
+        billed altogether. The services run in data centers physically located all over
+        the world and you get full control over where data is stored and how it is secured.
+      </p>
+      <p>
+        Your AWS account is where you turn on services, configure, and use them.
+        In general AWS is treated as a very technical product but Claria aims to make
+        configuration and use straightforward. We don't aim to "hide" AWS &mdash;
+        the AWS account used by your Claria Desktop App is always yours.
+        The developers of Claria never know how you're using the app. We gather
+        no telemetry or usage stats. We don't even track the number of downloads.
+      </p>
+      <h3>AWS Bedrock</h3>
+      <p>
+        AWS Bedrock is the key service powering Claria. Released in 2023, Bedrock makes
+        it possible to run a variety of AI systems. The task of inference is complex
+        and expensive: the models are very large and require many computers to run.
+      </p>
+      <p>
+        Bedrock is metered by <em>token</em>. You are essentially paying "wholesale"
+        for AI usage with no minimums &mdash; all while in a HIPAA-approved environment.
+        Anthropic has excellent models that excel at document summary and overall writing,
+        so you're getting the state of the art.
+      </p>
+    </div>
+  </section>
+
+  <!-- Why not Anthropic directly -->
+  <section id="why-not-anthropic">
+    <div class="container">
+      <h2>Why not use Anthropic's service directly?</h2>
+      <p>
+        Anthropic requires a certain amount of spend to create a HIPAA-compliant environment.
+        Most practitioners are just dipping their toes into AI and want a safe way to handle
+        patient data while reaping all the benefits of the AI boom.
+      </p>
+      <p>
+        Claria makes that possible: only pay for what you need and keep everything secure.
+      </p>
+    </div>
+  </section>
+
+  <!-- Report Workflow -->
+  <section id="workflow">
+    <div class="container">
+      <h2>The report workflow</h2>
+      <p>From clinical inputs to finished document in five steps.</p>
+      <ol class="workflow-steps">
+        <li><span>Select assessments and clinical inputs</span></li>
+        <li><span>See a cost estimate before anything runs</span></li>
+        <li><span>Generate a structured report via Bedrock</span></li>
+        <li><span>Preview and edit in the app using templates</span></li>
+        <li><span>Export to DOCX or PDF</span></li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- Supported Instruments -->
+  <section id="instruments">
+    <div class="container">
+      <h2>Supported instruments</h2>
+      <p>Claria ships with built-in support for these clinical assessment instruments.</p>
+      <ul class="instruments-grid">
+        <li>VB-MAPP</li>
+        <li>ABLLS-R</li>
+        <li>Vineland-3</li>
+        <li>ADOS-2</li>
+        <li>BASC-3</li>
+        <li>WAIS-IV</li>
+        <li>SRS-2</li>
+        <li>CARS-2</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- Cost Transparency -->
+  <section id="cost">
+    <div class="container">
+      <h2>Cost transparency</h2>
+      <p>
+        You pay AWS directly. Claria shows you an estimate before every generation
+        so there are no surprises. Here's what the models cost:
+      </p>
+      <table class="cost-table">
+        <thead>
+          <tr>
+            <th>Model</th>
+            <th>Input</th>
+            <th>Output</th>
+            <th>Best for</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td>Claude Sonnet 4</td>
+            <td>$3 / 1M tokens</td>
+            <td>$15 / 1M tokens</td>
+            <td>Everyday reports</td>
+          </tr>
+          <tr>
+            <td>Claude Opus 4</td>
+            <td>$15 / 1M tokens</td>
+            <td>$75 / 1M tokens</td>
+            <td>Complex evaluations</td>
+          </tr>
+          <tr>
+            <td>Claude 3.5 Haiku</td>
+            <td>$0.80 / 1M tokens</td>
+            <td>$4 / 1M tokens</td>
+            <td>Quick drafts</td>
+          </tr>
+        </tbody>
+      </table>
+      <div class="cost-example">
+        <strong>Example:</strong> A typical psychological evaluation report generated with
+        Claude Sonnet 4 costs approximately <strong>$0.05&ndash;$0.15</strong>.
+        A complex multi-section evaluation with Claude Opus 4 might cost
+        <strong>$0.15&ndash;$0.50</strong>.
+      </div>
+    </div>
+  </section>
+
+  <!-- HIPAA & BAA -->
+  <section id="hipaa">
+    <div class="container">
+      <h2>HIPAA compliance</h2>
+      <div class="hipaa-callout">
+        <h3>Sign a BAA with AWS. That's it.</h3>
+        <p>
+          AWS offers a Business Associate Agreement (BAA) at no extra cost.
+          Once you enroll, the AI services Claria uses become HIPAA-eligible.
+          No special pricing tier, no enterprise sales call.
+        </p>
+        <p style="margin-top: 16px;">
+          <a href="https://docs.aws.amazon.com/artifact/latest/ug/managingagreements.html">
+            Enroll in the AWS BAA &rarr;
+          </a>
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- Data Flow -->
+  <section id="data-flow">
+    <div class="container">
+      <h2>Where does your data go?</h2>
+      <p>Only two places: your computer and your AWS account.</p>
+      <div class="data-flow">
+        <div class="data-flow-node highlight">Your Desktop<br><small>Claria App</small></div>
+        <div class="data-flow-arrow">&harr;</div>
+        <div class="data-flow-node highlight">Your AWS Account<br><small>S3 + Bedrock</small></div>
+      </div>
+      <div class="data-flow-excluded">
+        Not through Claria's servers. Ever.
+      </div>
+    </div>
+  </section>
+
+  <!-- How do I run my own AI -->
+  <section id="own-ai">
+    <div class="container">
+      <h2>How do I run my own AI?</h2>
+      <p>
+        AWS runs text-generating models for you &mdash; that's <em>inference</em>.
+        These are cutting-edge models that wouldn't fit on your own computer.
+      </p>
+      <p>
+        You set up your AWS account (no middleman needed), you own it, and Claria
+        helps you configure it for HIPAA AI.
+      </p>
+    </div>
+  </section>
+
+  <!-- Getting Started -->
+  <section id="getting-started" class="getting-started">
+    <div class="container">
+      <h2>Getting started</h2>
+      <p>
+        Creating an AWS account takes about 10 minutes. You need an email address
+        and a credit card. Claria walks you through the rest.
+      </p>
+
+      <ol>
+        <li>
+          <h3>Set up your AWS account</h3>
+          <ul>
+            <li>Everything is encrypted and managed by AWS</li>
+            <li>Access the latest Anthropic Claude Sonnet and Opus models</li>
+            <li>Satisfies HIPAA when you execute a BAA with AWS</li>
+          </ul>
+        </li>
+        <li>
+          <h3>Upload your data to S3</h3>
+          <ul>
+            <li>Configure global inference rules</li>
+            <li>Set up global templates</li>
+          </ul>
+        </li>
+        <li>
+          <h3>Start a patient record</h3>
+          <ul>
+            <li>Intake forms (PDF, scans, etc.)</li>
+            <li>Patient-specific inference rules</li>
+            <li>Patient-specific templates</li>
+          </ul>
+        </li>
+        <li>
+          <h3>Generate reports</h3>
+          <ul>
+            <li>Select assessments and instruments</li>
+            <li>Review the cost estimate</li>
+            <li>Generate, preview, and export</li>
+          </ul>
+        </li>
+      </ol>
+    </div>
+  </section>
+
+  <!-- Screenshots placeholder -->
+  <section id="screenshots">
+    <div class="container">
+      <h2>See Claria in action</h2>
+      <p>Screenshots and a demo video are coming soon.</p>
+      <div class="screenshots-placeholder">
+        <div class="screenshot-slot">Setup wizard</div>
+        <div class="screenshot-slot">Report generation</div>
+        <div class="screenshot-slot">Report preview</div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Technical Details -->
+  <section id="technical">
+    <div class="container">
+      <h2>Technical details</h2>
+      <ul class="tech-list">
+        <li>Data is never sent to Claria's developers &mdash; the app is an interface to AWS services</li>
+        <li>You are always the owner of your AWS account</li>
+        <li>Patient data is stored encrypted in AWS S3</li>
+        <li>Built in Rust for memory safety and performance, using the official AWS SDK for Rust</li>
+        <li>9 focused, auditable crates &mdash; each one has a single responsibility</li>
+        <li>No telemetry, no usage stats, no download tracking</li>
+        <li>Everything is open source, including how we build the downloadable release</li>
+      </ul>
+      <p style="margin-top: 24px;">
+        <a href="https://github.com/claria-ai/claria">View the source on GitHub &rarr;</a>
+      </p>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <p>&copy; 2026 Claria. Open source under the <a href="https://github.com/claria-ai/claria">claria-ai</a> organization.</p>
+    </div>
+  </footer>
+
+</body>
+</html>
