@@ -83,6 +83,13 @@ a:hover {
   border-bottom: 1px solid #e8ecf0;
 }
 
+.hero-mascot {
+  width: 180px;
+  height: auto;
+  margin-bottom: 24px;
+  image-rendering: pixelated;
+}
+
 .hero h1 {
   margin-bottom: 24px;
 }
