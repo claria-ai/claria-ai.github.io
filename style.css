@@ -230,6 +230,47 @@ a:hover {
   color: #7eb8f7;
 }
 
+/* === Download Grid === */
+.download-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 16px;
+  margin-top: 24px;
+}
+
+.download-card {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 4px;
+  padding: 24px 16px;
+  border: 2px solid #d0d8e0;
+  border-radius: 8px;
+  text-decoration: none;
+  color: #1a2332;
+  transition: border-color 0.15s, background 0.15s;
+}
+
+.download-card:hover {
+  border-color: #1d5fa0;
+  background: #f4f8fc;
+}
+
+.download-card strong {
+  font-size: 1.1rem;
+}
+
+.download-card span {
+  font-size: 0.9rem;
+  color: #4b5c6e;
+}
+
+.download-size {
+  font-size: 0.8rem !important;
+  color: #8896a7 !important;
+  margin-top: 4px;
+}
+
 /* === Workflow Steps === */
 .workflow-steps {
   display: flex;
@@ -442,6 +483,10 @@ footer a {
 
   section {
     padding: 48px 0;
+  }
+
+  .download-grid {
+    grid-template-columns: 1fr;
   }
 
   .instruments-grid {

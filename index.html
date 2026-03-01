@@ -21,7 +21,7 @@
       <p class="tagline" style="margin-top: 0; font-size: 1.05rem;">
         Claria helps you configure the cloud to run your own inference on your own data.
       </p>
-      <a href="#getting-started" class="cta">Get Started</a>
+      <a href="#download" class="cta">Download Claria</a>
     </div>
   </header>
 
@@ -235,45 +235,78 @@
     </div>
   </section>
 
+  <!-- Download -->
+  <section id="download">
+    <div class="container">
+      <h2>Download Claria v0.1.1</h2>
+      <p>
+        Claria is free, open-source software. Download the app, and it will walk you
+        through setting up your AWS account and securing your environment step by step.
+      </p>
+      <div class="download-grid">
+        <a href="https://github.com/claria-ai/claria/releases/download/v0.1.1/Claria_0.1.1_aarch64.dmg" class="download-card">
+          <strong>macOS</strong>
+          <span>Apple Silicon (.dmg)</span>
+          <span class="download-size">10.2 MB</span>
+        </a>
+        <a href="https://github.com/claria-ai/claria/releases/download/v0.1.1/Claria_0.1.1_x64-setup.exe" class="download-card">
+          <strong>Windows</strong>
+          <span>Installer (.exe)</span>
+          <span class="download-size">5.0 MB</span>
+        </a>
+        <a href="https://github.com/claria-ai/claria/releases/download/v0.1.1/Claria_0.1.1_x64_en-US.msi" class="download-card">
+          <strong>Windows</strong>
+          <span>MSI package (.msi)</span>
+          <span class="download-size">7.2 MB</span>
+        </a>
+      </div>
+      <p style="margin-top: 16px; font-size: 0.9rem; color: #8896a7;">
+        All releases are available on <a href="https://github.com/claria-ai/claria/releases">GitHub Releases</a>.
+      </p>
+    </div>
+  </section>
+
   <!-- Getting Started -->
   <section id="getting-started" class="getting-started">
     <div class="container">
       <h2>Getting started</h2>
       <p>
-        Creating an AWS account takes about 10 minutes. You need an email address
-        and a credit card. Claria walks you through the rest.
+        Once you install Claria, the app walks you through everything. You don't need
+        to be technical &mdash; the built-in setup wizard handles AWS configuration,
+        security settings, and HIPAA compliance for you.
       </p>
 
       <ol>
         <li>
-          <h3>Set up your AWS account</h3>
+          <h3>Install Claria and create an AWS account</h3>
           <ul>
-            <li>Everything is encrypted and managed by AWS</li>
-            <li>Access the latest Anthropic Claude Sonnet and Opus models</li>
-            <li>Satisfies HIPAA when you execute a BAA with AWS</li>
+            <li>The setup wizard guides you through creating your AWS account (~10 minutes)</li>
+            <li>You'll need an email address and a credit card</li>
+            <li>Claria configures encryption, access controls, and storage automatically</li>
+          </ul>
+        </li>
+        <li>
+          <h3>Secure your environment</h3>
+          <ul>
+            <li>Claria walks you through signing the AWS Business Associate Agreement for HIPAA</li>
+            <li>Enables encryption on all data at rest and in transit</li>
+            <li>Provisions a private S3 bucket that only your account can access</li>
           </ul>
         </li>
         <li>
           <h3>Upload your data to S3</h3>
           <ul>
-            <li>Configure global inference rules</li>
-            <li>Set up global templates</li>
-          </ul>
-        </li>
-        <li>
-          <h3>Start a patient record</h3>
-          <ul>
-            <li>Intake forms (PDF, scans, etc.)</li>
-            <li>Patient-specific inference rules</li>
-            <li>Patient-specific templates</li>
+            <li>Configure global inference rules and templates</li>
+            <li>Start a patient record with intake forms (PDF, scans, etc.)</li>
+            <li>Add patient-specific inference rules and templates</li>
           </ul>
         </li>
         <li>
           <h3>Generate reports</h3>
           <ul>
             <li>Select assessments and instruments</li>
-            <li>Review the cost estimate</li>
-            <li>Generate, preview, and export</li>
+            <li>Review the cost estimate before anything runs</li>
+            <li>Generate, preview, edit, and export to DOCX or PDF</li>
           </ul>
         </li>
       </ol>
