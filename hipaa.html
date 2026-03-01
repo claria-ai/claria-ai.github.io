@@ -1,0 +1,570 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>HIPAA Compliance &mdash; Claria</title>
+  <meta name="description" content="How Claria configures your AWS account for HIPAA compliance. Technical controls, clinician responsibilities, and the self-hosted compliance model.">
+  <link rel="stylesheet" href="style.css">
+  <style>
+    /* HIPAA page-specific styles */
+    .page-header {
+      padding: 64px 0 48px;
+      border-bottom: 1px solid #e8ecf0;
+    }
+    .page-header .back-link {
+      display: inline-block;
+      margin-bottom: 24px;
+      font-size: 0.9rem;
+      color: #4b5c6e;
+      text-decoration: none;
+    }
+    .page-header .back-link:hover {
+      color: #1d5fa0;
+    }
+    .page-header h1 {
+      margin-bottom: 16px;
+    }
+    .page-header .subtitle {
+      font-size: 1.1rem;
+      color: #4b5c6e;
+      max-width: 640px;
+    }
+
+    .compliance-table {
+      width: 100%;
+      border-collapse: collapse;
+      margin: 24px 0;
+      font-size: 0.92rem;
+    }
+    .compliance-table th,
+    .compliance-table td {
+      text-align: left;
+      padding: 12px 16px;
+      border-bottom: 1px solid #e0e6ed;
+      vertical-align: top;
+    }
+    .compliance-table th {
+      background: #f4f7fa;
+      font-weight: 600;
+      color: #0f1b2d;
+      font-size: 0.82rem;
+      text-transform: uppercase;
+      letter-spacing: 0.04em;
+    }
+    .compliance-table td {
+      color: #374151;
+    }
+    .compliance-table td code {
+      font-family: "SF Mono", Menlo, Consolas, monospace;
+      font-size: 0.82rem;
+      background: #f4f7fa;
+      padding: 2px 6px;
+      border-radius: 3px;
+      color: #1a2332;
+    }
+
+    .callout {
+      border-radius: 8px;
+      padding: 24px 28px;
+      margin: 24px 0;
+    }
+    .callout p {
+      margin-bottom: 12px;
+    }
+    .callout p:last-child {
+      margin-bottom: 0;
+    }
+    .callout-blue {
+      background: #eaf2fb;
+      border: 1px solid #b8d4f0;
+      color: #1a3d6e;
+    }
+    .callout-blue strong {
+      color: #0f2847;
+    }
+    .callout-amber {
+      background: #fef8ee;
+      border: 1px solid #f0d8a8;
+      color: #6e4a0a;
+    }
+    .callout-amber strong {
+      color: #4a3005;
+    }
+    .callout-red {
+      background: #fef3f2;
+      border: 1px solid #f0bbb5;
+      color: #6e1a14;
+    }
+    .callout-red strong {
+      color: #4a0e0a;
+    }
+
+    .check-list {
+      list-style: none;
+      padding: 0;
+    }
+    .check-list li {
+      padding: 8px 0 8px 28px;
+      position: relative;
+      color: #374151;
+    }
+    .check-list li::before {
+      content: "\2713";
+      position: absolute;
+      left: 0;
+      color: #27854a;
+      font-weight: 700;
+    }
+
+    .responsibility-list {
+      list-style: none;
+      padding: 0;
+    }
+    .responsibility-list li {
+      padding: 8px 0 8px 28px;
+      position: relative;
+      color: #374151;
+    }
+    .responsibility-list li::before {
+      content: "\25CB";
+      position: absolute;
+      left: 0;
+      color: #1d5fa0;
+      font-weight: 700;
+    }
+
+    .cfr-ref {
+      font-size: 0.82rem;
+      color: #8896a7;
+    }
+
+    .two-col {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 24px;
+      margin-top: 24px;
+    }
+    .two-col-card {
+      background: #f4f7fa;
+      border: 1px solid #e0e6ed;
+      border-radius: 8px;
+      padding: 24px;
+    }
+    .two-col-card h3 {
+      margin-bottom: 12px;
+    }
+    .two-col-card ul {
+      padding-left: 20px;
+      color: #374151;
+    }
+    .two-col-card li {
+      margin-bottom: 6px;
+    }
+
+    @media (max-width: 768px) {
+      .page-header {
+        padding: 48px 0 32px;
+      }
+      .compliance-table {
+        font-size: 0.82rem;
+      }
+      .compliance-table th,
+      .compliance-table td {
+        padding: 10px 8px;
+      }
+      .two-col {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- Header -->
+  <header class="page-header">
+    <div class="container">
+      <a href="index.html" class="back-link">&larr; Back to Claria</a>
+      <h1>HIPAA Compliance</h1>
+      <p class="subtitle">
+        How Claria configures your AWS account to meet HIPAA requirements,
+        what the app handles for you, and what remains your responsibility
+        as a covered entity.
+      </p>
+    </div>
+  </header>
+
+  <!-- Overview -->
+  <section>
+    <div class="container">
+      <h2>How HIPAA applies to you</h2>
+      <p>
+        If you are a psychologist or clinical practitioner drafting reports that
+        contain patient information, you are handling <strong>Protected Health
+        Information (PHI)</strong>. HIPAA&rsquo;s Security Rule
+        (45 CFR 164.308, 164.310, 164.312) requires you to protect that data
+        with administrative, physical, and technical safeguards.
+      </p>
+      <p>
+        When you use a cloud service to store or process PHI, that cloud
+        provider becomes a <strong>Business Associate</strong>. Per
+        <a href="https://www.hhs.gov/hipaa/for-professionals/special-topics/health-information-technology/cloud-computing/index.html">HHS
+        guidance on cloud computing</a>, this is true even if the provider
+        cannot view the data because it is encrypted. You must sign a
+        Business Associate Agreement (BAA) before placing PHI on the service.
+      </p>
+      <div class="callout callout-blue">
+        <p>
+          <strong>With Claria, AWS is your only Business Associate.</strong>
+          The Claria app runs on your computer and connects directly to your
+          AWS account. Claria&rsquo;s developers never see your data, credentials,
+          or usage. The BAA is between you and AWS.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- What Claria configures -->
+  <section>
+    <div class="container">
+      <h2>What Claria configures for you</h2>
+      <p>
+        When you run the setup wizard, Claria&rsquo;s provisioner automatically
+        creates and hardens the following AWS resources in your account.
+        The dashboard continuously monitors these settings and alerts you
+        if anything drifts from the desired state.
+      </p>
+
+      <h3>Identity &amp; access management</h3>
+      <ul class="check-list">
+        <li>Creates a dedicated <code>claria-admin</code> IAM user with least-privilege permissions</li>
+        <li>S3 actions are resource-scoped to your specific data bucket &mdash; no wildcard access</li>
+        <li>Continuously verifies the IAM policy matches expected permissions (drift detection)</li>
+      </ul>
+      <p class="cfr-ref">&sect;164.308(a)(3)(i), &sect;164.308(a)(4)(i)</p>
+
+      <h3>Encrypted storage (S3)</h3>
+      <ul class="check-list">
+        <li>Creates a private S3 bucket for all client records, documents, and chat history</li>
+        <li><strong>Encryption at rest:</strong> AES-256 server-side encryption enabled on the bucket</li>
+        <li><strong>Versioning:</strong> S3 versioning protects against accidental deletion</li>
+        <li><strong>Public access block:</strong> All four flags set &mdash; data can never be made publicly accessible</li>
+        <li><strong>Bucket policy:</strong> Only allows CloudTrail write access, scoped by account ID</li>
+      </ul>
+      <p class="cfr-ref">&sect;164.312(a)(2)(iv), &sect;164.308(a)(1)(ii)(B)</p>
+
+      <h3>Audit logging (CloudTrail)</h3>
+      <ul class="check-list">
+        <li>Creates a CloudTrail trail that records all API activity in your account</li>
+        <li>Logs are stored encrypted in the data bucket under <code>_cloudtrail/</code></li>
+        <li>Dashboard monitors trail logging status</li>
+      </ul>
+      <p class="cfr-ref">&sect;164.312(b), &sect;164.308(a)(3)(ii)(A)</p>
+
+      <h3>BAA agreement</h3>
+      <ul class="check-list">
+        <li>Checks whether the AWS Business Associate Agreement has been accepted</li>
+        <li>Surfaces BAA status as a precondition on the dashboard</li>
+        <li>Guides you to accept it if missing &mdash; this is a one-time step in the AWS Console</li>
+      </ul>
+      <p class="cfr-ref">&sect;164.308(b)(1)</p>
+
+      <h3>AI model access (Bedrock)</h3>
+      <ul class="check-list">
+        <li>Enables Claude models via AWS Bedrock &mdash; a HIPAA-eligible service covered by the AWS BAA</li>
+        <li>Bedrock does not use your data for model training &mdash; prompts and completions are not stored after the request completes</li>
+        <li>Only files attached to a specific client are sent to the model (minimum necessary principle)</li>
+      </ul>
+      <p class="cfr-ref">&sect;164.308(b)(1), &sect;164.502(b)</p>
+
+      <h3>Audio transcription (Transcribe)</h3>
+      <ul class="check-list">
+        <li>Amazon Transcribe is a HIPAA-eligible service covered by the AWS BAA</li>
+        <li>Audio stays in the encrypted bucket; temporary artifacts are cleaned up after transcription</li>
+      </ul>
+
+      <h3>Encryption in transit</h3>
+      <ul class="check-list">
+        <li>All communication with AWS uses TLS &mdash; S3, Bedrock, and Transcribe endpoints are HTTPS-only</li>
+        <li>The desktop app communicates with AWS exclusively over encrypted connections</li>
+      </ul>
+      <p class="cfr-ref">&sect;164.312(e)(1)</p>
+    </div>
+  </section>
+
+  <!-- Compliance mapping -->
+  <section>
+    <div class="container">
+      <h2>HIPAA requirements and Claria&rsquo;s controls</h2>
+      <p>
+        The table below maps specific HIPAA Security Rule requirements to the
+        technical controls Claria provisions in your AWS account.
+      </p>
+
+      <table class="compliance-table">
+        <thead>
+          <tr>
+            <th>Requirement</th>
+            <th>CFR citation</th>
+            <th>Claria&rsquo;s control</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><strong>Encryption at rest</strong></td>
+            <td>&sect;164.312(a)(2)(iv)</td>
+            <td>S3 bucket with AES-256 server-side encryption enforced</td>
+          </tr>
+          <tr>
+            <td><strong>Encryption in transit</strong></td>
+            <td>&sect;164.312(e)(1)</td>
+            <td>All AWS API calls use TLS; all endpoints are HTTPS-only</td>
+          </tr>
+          <tr>
+            <td><strong>Access controls</strong></td>
+            <td>&sect;164.312(a)(1)</td>
+            <td>Dedicated IAM user with least-privilege policy, resource-scoped to data bucket</td>
+          </tr>
+          <tr>
+            <td><strong>Audit controls</strong></td>
+            <td>&sect;164.312(b)</td>
+            <td>CloudTrail records every API call with encrypted log storage</td>
+          </tr>
+          <tr>
+            <td><strong>Integrity controls</strong></td>
+            <td>&sect;164.312(c)(1)</td>
+            <td>S3 versioning &mdash; objects cannot be silently overwritten or deleted</td>
+          </tr>
+          <tr>
+            <td><strong>Risk management</strong></td>
+            <td>&sect;164.308(a)(1)(ii)(B)</td>
+            <td>Dashboard scans all infrastructure resources and reports configuration drift</td>
+          </tr>
+          <tr>
+            <td><strong>No public exposure</strong></td>
+            <td>&sect;164.308(a)(3)(i)</td>
+            <td>S3 public access block (all four flags) prevents accidental public access</td>
+          </tr>
+          <tr>
+            <td><strong>BAA with cloud provider</strong></td>
+            <td>&sect;164.308(b)(1)</td>
+            <td>Claria checks for active AWS BAA and blocks provisioning until acknowledged</td>
+          </tr>
+          <tr>
+            <td><strong>AI provider compliance</strong></td>
+            <td>&sect;164.308(b)(1)</td>
+            <td>Bedrock is HIPAA-eligible under the AWS BAA; no data retention or training</td>
+          </tr>
+          <tr>
+            <td><strong>Minimum necessary</strong></td>
+            <td>&sect;164.502(b)</td>
+            <td>Only files attached to a specific client are sent to the model</td>
+          </tr>
+          <tr>
+            <td><strong>Data residency</strong></td>
+            <td>&sect;164.312(a)(1)</td>
+            <td>All data in your own AWS account in your chosen region; Claria developers have zero access</td>
+          </tr>
+        </tbody>
+      </table>
+
+      <h3>AWS Config HIPAA rules addressed</h3>
+      <p>
+        From the
+        <a href="https://docs.aws.amazon.com/config/latest/developerguide/operational-best-practices-for-hipaa_security.html">AWS
+        Config HIPAA Security conformance pack</a>, Claria directly addresses:
+      </p>
+
+      <table class="compliance-table">
+        <thead>
+          <tr>
+            <th>AWS Config Rule</th>
+            <th>What Claria does</th>
+          </tr>
+        </thead>
+        <tbody>
+          <tr>
+            <td><code>s3-bucket-server-side-encryption-enabled</code></td>
+            <td>Enforces AES-256 encryption on the data bucket</td>
+          </tr>
+          <tr>
+            <td><code>s3-bucket-versioning-enabled</code></td>
+            <td>Enables versioning for integrity and recovery</td>
+          </tr>
+          <tr>
+            <td><code>s3-bucket-public-read-prohibited</code></td>
+            <td>All four public access block flags set</td>
+          </tr>
+          <tr>
+            <td><code>s3-bucket-public-write-prohibited</code></td>
+            <td>All four public access block flags set</td>
+          </tr>
+          <tr>
+            <td><code>cloudtrail-enabled</code></td>
+            <td>Creates and enables a CloudTrail trail</td>
+          </tr>
+          <tr>
+            <td><code>iam-policy-no-statements-with-admin-access</code></td>
+            <td>IAM policy is scoped; no <code>Action: *</code> + <code>Resource: *</code></td>
+          </tr>
+          <tr>
+            <td><code>iam-policy-no-statements-with-full-access</code></td>
+            <td>Each IAM statement is scoped to specific actions</td>
+          </tr>
+          <tr>
+            <td><code>iam-root-access-key-check</code></td>
+            <td>Setup wizard guides away from root credentials</td>
+          </tr>
+        </tbody>
+      </table>
+    </div>
+  </section>
+
+  <!-- Your responsibilities -->
+  <section>
+    <div class="container">
+      <h2>Your responsibilities as a covered entity</h2>
+      <p>
+        Claria automates the technical configuration of your AWS resources.
+        But HIPAA compliance extends beyond infrastructure. Per
+        <a href="https://www.hhs.gov/hipaa/for-professionals/special-topics/health-information-technology/cloud-computing/index.html">HHS guidance</a>,
+        the covered entity retains ultimate responsibility even when using a cloud provider.
+      </p>
+
+      <div class="two-col">
+        <div class="two-col-card">
+          <h3>Administrative safeguards</h3>
+          <ul>
+            <li><strong>Risk analysis</strong> &mdash; conduct your own assessment of using Claria, even though the app automates technical setup</li>
+            <li><strong>Policies and procedures</strong> &mdash; written HIPAA policies for your practice</li>
+            <li><strong>Workforce training</strong> &mdash; staff must understand HIPAA obligations and how to use Claria securely</li>
+            <li><strong>Breach notification</strong> &mdash; you must notify affected individuals and HHS in the event of a breach</li>
+          </ul>
+        </div>
+        <div class="two-col-card">
+          <h3>Physical safeguards</h3>
+          <ul>
+            <li><strong>Device security</strong> &mdash; physical security of the computer running Claria</li>
+            <li><strong>Disk encryption</strong> &mdash; enable FileVault (macOS) or BitLocker (Windows)</li>
+            <li><strong>Device disposal</strong> &mdash; secure wipe procedures for retired equipment</li>
+          </ul>
+        </div>
+        <div class="two-col-card">
+          <h3>Technical safeguards</h3>
+          <ul>
+            <li><strong>Network security</strong> &mdash; secure Wi-Fi, VPN, and firewall at your clinic</li>
+            <li><strong>OS updates</strong> &mdash; keep your workstation patched</li>
+            <li><strong>AWS account security</strong> &mdash; enable MFA, use strong passwords</li>
+            <li><strong>Sign the BAA</strong> &mdash; Claria checks and prompts, but you must accept it in the AWS Console</li>
+          </ul>
+        </div>
+        <div class="two-col-card">
+          <h3>Organizational requirements</h3>
+          <ul>
+            <li><strong>Records retention</strong> &mdash; HIPAA requires 6-year retention beyond S3 versioning</li>
+            <li><strong>Compliance documentation</strong> &mdash; keep notes on risk assessments, policy decisions, and remediation</li>
+            <li><strong>Clinical content</strong> &mdash; you own the accuracy and clinical judgment of all reports</li>
+          </ul>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Self-hosted model -->
+  <section>
+    <div class="container">
+      <h2>The self-hosted compliance model</h2>
+      <p>
+        Claria is designed so that you own all the infrastructure. This is both
+        a feature and a responsibility.
+      </p>
+
+      <div class="callout callout-blue">
+        <p>
+          <strong>The feature:</strong> No third-party SaaS vendor has access to
+          patient data. There is no vendor lock-in, no data escrow, no
+          subscription that could lapse and lock out access to records. Your AWS
+          account is always yours. Claria collects no telemetry and the
+          developers never see any user data.
+        </p>
+      </div>
+
+      <div class="callout callout-amber">
+        <p>
+          <strong>The responsibility:</strong> In a traditional SaaS arrangement,
+          the vendor takes on compliance responsibility as a Business Associate.
+          With Claria, you are both the Covered Entity and the operator of the
+          infrastructure. This means:
+        </p>
+        <ul class="responsibility-list" style="margin-top: 12px;">
+          <li>You are responsible for auditing your own AWS account</li>
+          <li>Misconfiguration resulting from Claria&rsquo;s use is your responsibility</li>
+          <li>The Claria authors are not a Business Associate and accept no liability for HIPAA compliance</li>
+          <li>You must keep documentation of your compliance process</li>
+          <li>AWS is the only Business Associate in this arrangement</li>
+        </ul>
+      </div>
+
+      <h3>How Claria mitigates these risks</h3>
+      <ul class="check-list">
+        <li><strong>Automated provisioning</strong> eliminates most manual configuration errors</li>
+        <li><strong>Drift detection</strong> catches configuration changes and surfaces them immediately on the dashboard</li>
+        <li><strong>Single-pane dashboard</strong> gives you a complete view of all compliance-relevant infrastructure state</li>
+        <li><strong>Open source</strong> means you (or your IT consultant) can audit exactly what Claria does</li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- Getting started with BAA -->
+  <section>
+    <div class="container">
+      <h2>Getting started</h2>
+      <p>
+        The first step toward HIPAA-compliant AI is signing the AWS Business
+        Associate Agreement. This is a free, one-time step in the AWS Console.
+      </p>
+      <div class="hipaa-callout">
+        <h3>Sign the AWS BAA</h3>
+        <p>
+          AWS offers a Business Associate Agreement at no extra cost.
+          Once enrolled, the services Claria uses &mdash; S3, Bedrock,
+          Transcribe, and CloudTrail &mdash; become HIPAA-eligible.
+          No special pricing tier, no enterprise sales call.
+        </p>
+        <p style="margin-top: 16px;">
+          <a href="https://docs.aws.amazon.com/artifact/latest/ug/managingagreements.html">
+            Enroll in the AWS BAA &rarr;
+          </a>
+        </p>
+      </div>
+      <p style="margin-top: 24px;">
+        After signing the BAA, <a href="index.html#download">download Claria</a>
+        and the setup wizard will walk you through the rest &mdash; creating
+        your IAM user, configuring encryption, enabling audit logging, and
+        setting up AI model access.
+      </p>
+    </div>
+  </section>
+
+  <!-- Sources -->
+  <section>
+    <div class="container">
+      <h2>Sources</h2>
+      <ul style="padding-left: 20px; color: #374151;">
+        <li><a href="https://www.hhs.gov/hipaa/for-professionals/special-topics/health-information-technology/cloud-computing/index.html">HHS Guidance on HIPAA &amp; Cloud Computing</a></li>
+        <li><a href="https://docs.aws.amazon.com/config/latest/developerguide/operational-best-practices-for-hipaa_security.html">AWS Config Operational Best Practices for HIPAA Security</a></li>
+        <li><a href="https://docs.aws.amazon.com/artifact/latest/ug/managingagreements.html">AWS Artifact &mdash; Managing Agreements</a></li>
+        <li><a href="https://www.hhs.gov/hipaa/for-professionals/faq/2075/may-a-hipaa-covered-entity-or-business-associate-use-cloud-service-to-store-or-process-ephi/index.html">HHS FAQ: Cloud services and ePHI</a></li>
+      </ul>
+    </div>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <p>&copy; 2026 Claria. Open source under the <a href="https://github.com/claria-ai/claria">claria-ai</a> organization.</p>
+    </div>
+  </footer>
+
+</body>
+</html>
