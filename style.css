@@ -265,10 +265,32 @@ a:hover {
   color: #4b5c6e;
 }
 
+.download-icon {
+  width: 32px;
+  height: 32px;
+  color: #4b5c6e;
+  margin-bottom: 4px;
+}
+
+.download-card:hover .download-icon {
+  color: #1d5fa0;
+}
+
 .download-size {
   font-size: 0.8rem !important;
   color: #8896a7 !important;
   margin-top: 4px;
+}
+
+.macos-beta-hint {
+  font-size: 0.78rem !important;
+  color: transparent !important;
+  margin-top: 2px;
+  transition: color 0.15s;
+}
+
+.macos-card:hover .macos-beta-hint {
+  color: #c0392b !important;
 }
 
 .mac-note {
