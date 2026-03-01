@@ -118,29 +118,48 @@ a:hover {
   background: #174d85;
 }
 
-/* === "Not" list === */
-.not-list {
-  list-style: none;
-  padding: 0;
+/* === FAQ === */
+.faq-item {
+  border: 1px solid #e0e6ed;
+  border-radius: 6px;
+  margin-bottom: 12px;
 }
 
-.not-list li {
-  padding: 12px 0 12px 36px;
-  position: relative;
-  color: #374151;
-}
-
-.not-list li::before {
-  content: "\2717";
-  position: absolute;
-  left: 0;
-  color: #c0392b;
-  font-weight: 700;
-  font-size: 1.1rem;
-}
-
-.not-list li strong {
+.faq-item summary {
+  padding: 16px 20px;
+  cursor: pointer;
+  font-weight: 600;
   color: #1a2332;
+  background: #f4f7fa;
+  border-radius: 6px;
+  list-style: none;
+}
+
+.faq-item summary::-webkit-details-marker {
+  display: none;
+}
+
+.faq-item summary::before {
+  content: "+";
+  display: inline-block;
+  width: 1.2em;
+  font-weight: 700;
+  color: #1d5fa0;
+}
+
+.faq-item[open] summary::before {
+  content: "\2212";
+}
+
+.faq-item[open] summary {
+  border-radius: 6px 6px 0 0;
+  border-bottom: 1px solid #e0e6ed;
+}
+
+.faq-item p {
+  padding: 16px 20px 16px 40px;
+  margin: 0;
+  color: #374151;
 }
 
 /* === Instruments Grid === */
