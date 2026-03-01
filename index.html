@@ -263,6 +263,23 @@
       <p style="margin-top: 16px; font-size: 0.9rem; color: #8896a7;">
         All releases are available on <a href="https://github.com/claria-ai/claria/releases">GitHub Releases</a>.
       </p>
+
+      <details class="mac-note">
+        <summary>macOS users: opening Claria during the beta</summary>
+        <p>
+          Claria is currently ad-hoc signed (no Apple Developer certificate).
+          macOS quarantines apps downloaded from the internet, so you may see
+          a warning that the app "can't be opened." This is a one-time fix.
+        </p>
+        <p>Before opening the DMG, strip the quarantine attribute in Terminal:</p>
+        <pre><code>xattr -d com.apple.quarantine ~/Downloads/Claria_0.1.1_aarch64.dmg</code></pre>
+        <p>Then open the DMG and drag Claria to Applications. If you already copied it:</p>
+        <pre><code>xattr -cr /Applications/Claria.app</code></pre>
+        <p>
+          Proper Apple Developer signing and notarization is planned &mdash; this
+          workaround will go away in a future release.
+        </p>
+      </details>
     </div>
   </section>
 
