@@ -9,16 +9,18 @@
 </head>
 <body>
 
-  <!-- Hero (compact) -->
+  <!-- Hero -->
   <header class="hero">
     <div class="container">
-      <div class="hero-heading">
+      <div class="hero-split">
         <img src="img/lucia-shield.png" alt="Lucia, the Claria mascot — a black schnauzer with a clipboard" class="hero-mascot">
-        <h1>Claria</h1>
+        <div class="hero-divider"></div>
+        <div class="hero-text">
+          <h1>Claria</h1>
+          <p class="hero-sub">Secure AI report writing for clinicians.</p>
+          <p class="hero-sub">Your data, your AWS account, no middleman.</p>
+        </div>
       </div>
-      <p class="tagline">
-        Secure AI report writing for clinicians. Your data, your AWS account, no middleman.
-      </p>
       <a href="#download" class="cta">Download Claria</a>
     </div>
   </header>
@@ -114,19 +116,19 @@
 
   </div>
 
-  <!-- Tab: How It Works (Workflow + Getting Started + Cost) -->
+  <!-- Tab: How It Works (Clinical Workflow + Getting Started + Cost) -->
   <div class="tab-panel" data-tab="how-it-works">
 
     <section id="workflow">
       <div class="container">
-        <h2>The report workflow</h2>
-        <p>From clinical inputs to finished document in five steps.</p>
+        <h2>The clinical workflow</h2>
+        <p>From uploaded documents to polished clinical writing in five steps.</p>
         <ol class="workflow-steps">
-          <li><span>Select assessments and clinical inputs</span></li>
-          <li><span>See a cost estimate before anything runs</span></li>
-          <li><span>Generate a structured report via Bedrock</span></li>
-          <li><span>Preview and edit in the app using templates</span></li>
-          <li><span>Export to DOCX or PDF</span></li>
+          <li><span>Upload clinical documents &mdash; PDF, Word, audio, and more</span></li>
+          <li><span>Chat with AI using your documents as context</span></li>
+          <li><span>Draft report sections, analyze assessments, or build histories</span></li>
+          <li><span>Edit and refine text directly in the client record</span></li>
+          <li><span>Record voice memos with on-device transcription</span></li>
         </ol>
       </div>
     </section>
@@ -158,19 +160,19 @@
             </ul>
           </li>
           <li>
-            <h3>Upload your data to S3</h3>
+            <h3>Add your first client</h3>
             <ul>
-              <li>Configure global inference rules and templates</li>
-              <li>Start a patient record with intake forms (PDF, scans, etc.)</li>
-              <li>Add patient-specific inference rules and templates</li>
+              <li>Create a client record and upload intake forms, reports, and session recordings</li>
+              <li>Claria accepts PDF, Microsoft Word, and most audio formats</li>
+              <li>Record voice memos with on-device transcription powered by Whisper</li>
             </ul>
           </li>
           <li>
-            <h3>Generate reports</h3>
+            <h3>Start working with AI</h3>
             <ul>
-              <li>Select assessments and instruments</li>
-              <li>Review the cost estimate before anything runs</li>
-              <li>Generate, preview, edit, and export to DOCX or PDF</li>
+              <li>Chat with AI about the uploaded documents</li>
+              <li>Draft clinical histories, analyze assessment results, or write report sections</li>
+              <li>All chat history is saved alongside the client record</li>
             </ul>
           </li>
         </ol>
@@ -181,8 +183,8 @@
       <div class="container">
         <h2>Cost transparency</h2>
         <p>
-          You pay AWS directly. Claria shows you an estimate before every generation
-          so there are no surprises. Here's what the models cost:
+          You pay AWS directly &mdash; there is no Claria subscription fee.
+          Here's what the models cost:
         </p>
         <table class="cost-table">
           <thead>
@@ -215,9 +217,9 @@
           </tbody>
         </table>
         <div class="cost-example">
-          <strong>Example:</strong> A typical psychological evaluation report generated with
+          <strong>Example:</strong> A typical chat conversation drafting a report section with
           Claude Sonnet 4 costs approximately <strong>$0.05&ndash;$0.15</strong>.
-          A complex multi-section evaluation with Claude Opus 4 might cost
+          A longer session analyzing multiple documents with Claude Opus 4 might cost
           <strong>$0.15&ndash;$0.50</strong>.
         </div>
       </div>
