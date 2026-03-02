@@ -76,29 +76,36 @@ a:hover {
   text-decoration-color: #1d5fa0;
 }
 
-/* === Hero === */
+/* === Hero (compact) === */
 .hero {
-  padding: 96px 0 72px;
+  padding: 48px 0 32px;
   text-align: center;
-  border-bottom: 1px solid #e8ecf0;
+  border-bottom: none;
+}
+
+.hero-heading {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 16px;
+  margin-bottom: 16px;
 }
 
 .hero-mascot {
-  width: 180px;
+  width: 72px;
   height: auto;
-  margin-bottom: 24px;
   image-rendering: pixelated;
 }
 
 .hero h1 {
-  margin-bottom: 24px;
+  margin-bottom: 0;
 }
 
 .hero .tagline {
-  font-size: 1.2rem;
+  font-size: 1.1rem;
   color: #4b5c6e;
   max-width: 600px;
-  margin: 0 auto 32px;
+  margin: 0 auto 20px;
   line-height: 1.6;
 }
 
@@ -107,7 +114,7 @@ a:hover {
   background: #1d5fa0;
   color: #fff;
   text-decoration: none;
-  padding: 12px 32px;
+  padding: 10px 28px;
   border-radius: 6px;
   font-weight: 500;
   font-size: 1rem;
@@ -116,6 +123,55 @@ a:hover {
 
 .hero .cta:hover {
   background: #174d85;
+}
+
+/* === Tab Bar === */
+.tab-bar {
+  position: sticky;
+  top: 0;
+  z-index: 100;
+  background: #fff;
+  border-bottom: 1px solid #e8ecf0;
+}
+
+.tab-bar .container {
+  display: flex;
+  gap: 0;
+  overflow-x: auto;
+  -webkit-overflow-scrolling: touch;
+}
+
+.tab-btn {
+  flex: 1;
+  padding: 14px 20px;
+  border: none;
+  background: none;
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: #6b7a8d;
+  cursor: pointer;
+  border-bottom: 3px solid transparent;
+  transition: color 0.15s, border-color 0.15s;
+  white-space: nowrap;
+  font-family: inherit;
+}
+
+.tab-btn:hover {
+  color: #1a2332;
+}
+
+.tab-btn.active {
+  color: #1d5fa0;
+  border-bottom-color: #1d5fa0;
+}
+
+/* === Tab Panels === */
+.tab-panel {
+  display: none;
+}
+
+.tab-panel.active {
+  display: block;
 }
 
 /* === FAQ === */
@@ -731,7 +787,16 @@ footer a {
   }
 
   .hero {
-    padding: 64px 0 48px;
+    padding: 32px 0 24px;
+  }
+
+  .hero-mascot {
+    width: 56px;
+  }
+
+  .tab-btn {
+    padding: 12px 14px;
+    font-size: 0.88rem;
   }
 
   section {

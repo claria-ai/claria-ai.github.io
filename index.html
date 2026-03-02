@@ -9,359 +9,377 @@
 </head>
 <body>
 
-  <!-- Hero -->
+  <!-- Hero (compact) -->
   <header class="hero">
     <div class="container">
-      <img src="img/lucia-shield.png" alt="Lucia, the Claria mascot — a black schnauzer with a clipboard" class="hero-mascot">
-      <h1>Claria</h1>
+      <div class="hero-heading">
+        <img src="img/lucia-shield.png" alt="Lucia, the Claria mascot — a black schnauzer with a clipboard" class="hero-mascot">
+        <h1>Claria</h1>
+      </div>
       <p class="tagline">
         A HIPAA-sensitive report writing and analysis tool for clinicians.
         Use state of the art AI models in a responsible way: get reports done
         quicker and more accurately.
       </p>
-      <p class="tagline" style="margin-top: 0; font-size: 1.05rem;">
-        The Claria desktop app combines secure document management and personalized AI
-        to provide insights and perform complex analysis tasks.
-      </p>
       <a href="#download" class="cta">Download Claria</a>
     </div>
   </header>
 
-  <!-- Who is Claria for? -->
-  <section id="audience">
+  <!-- Tab bar -->
+  <nav class="tab-bar">
     <div class="container">
-      <h2>Who is Claria for?</h2>
-      <p>
-        Claria is built for <strong>psychologists</strong>
-        and <strong>clinical practitioners</strong> who write evaluation reports.
-        If your day involves psychological evaluations, behavioral assessments,
-        or progress reports, Claria was designed with your workflow in mind.
-      </p>
-      <p>
-        This is not a generic AI tool. Claria understands the specific instruments
-        you use and generates structured clinical reports that match your practice.
-      </p>
+      <button class="tab-btn active" data-tab="features">Features</button>
+      <button class="tab-btn" data-tab="how-it-works">How It Works</button>
+      <button class="tab-btn" data-tab="security">Security</button>
+      <button class="tab-btn" data-tab="download">Download</button>
     </div>
-  </section>
+  </nav>
 
-  <!-- Report Workflow -->
-  <section id="workflow">
-    <div class="container">
-      <h2>The report workflow</h2>
-      <p>From clinical inputs to finished document in five steps.</p>
-      <ol class="workflow-steps">
-        <li><span>Select assessments and clinical inputs</span></li>
-        <li><span>See a cost estimate before anything runs</span></li>
-        <li><span>Generate a structured report via Bedrock</span></li>
-        <li><span>Preview and edit in the app using templates</span></li>
-        <li><span>Export to DOCX or PDF</span></li>
-      </ol>
-    </div>
-  </section>
+  <!-- Tab: Features (Audience + Screenshots) -->
+  <div class="tab-panel active" data-tab="features">
 
-  <!-- Cost Transparency -->
-  <section id="cost">
-    <div class="container">
-      <h2>Cost transparency</h2>
-      <p>
-        You pay AWS directly. Claria shows you an estimate before every generation
-        so there are no surprises. Here's what the models cost:
-      </p>
-      <table class="cost-table">
-        <thead>
-          <tr>
-            <th>Model</th>
-            <th>Input</th>
-            <th>Output</th>
-            <th>Best for</th>
-          </tr>
-        </thead>
-        <tbody>
-          <tr>
-            <td>Claude Sonnet 4</td>
-            <td>$3 / 1M tokens</td>
-            <td>$15 / 1M tokens</td>
-            <td>Everyday reports</td>
-          </tr>
-          <tr>
-            <td>Claude Opus 4</td>
-            <td>$15 / 1M tokens</td>
-            <td>$75 / 1M tokens</td>
-            <td>Complex evaluations</td>
-          </tr>
-          <tr>
-            <td>Claude 3.5 Haiku</td>
-            <td>$0.80 / 1M tokens</td>
-            <td>$4 / 1M tokens</td>
-            <td>Quick drafts</td>
-          </tr>
-        </tbody>
-      </table>
-      <div class="cost-example">
-        <strong>Example:</strong> A typical psychological evaluation report generated with
-        Claude Sonnet 4 costs approximately <strong>$0.05&ndash;$0.15</strong>.
-        A complex multi-section evaluation with Claude Opus 4 might cost
-        <strong>$0.15&ndash;$0.50</strong>.
-      </div>
-    </div>
-  </section>
-
-  <!-- HIPAA & BAA -->
-  <section id="hipaa">
-    <div class="container">
-      <h2>HIPAA compliance</h2>
-      <div class="hipaa-callout">
-        <h3>Claria helps &mdash; but compliance is a shared responsibility</h3>
+    <section id="audience">
+      <div class="container">
+        <h2>Who is Claria for?</h2>
         <p>
-          Claria provides the technical safeguards: encryption at rest and in transit,
-          audit logging via CloudTrail, versioned storage, and least-privilege access controls.
-          It also walks you through signing a Business Associate Agreement (BAA) with AWS,
-          which makes the services Claria uses HIPAA-eligible at no extra cost.
+          Claria is built for <strong>psychologists</strong>
+          and <strong>clinical practitioners</strong> who write evaluation reports.
+          If your day involves psychological evaluations, behavioral assessments,
+          or progress reports, Claria was designed with your workflow in mind.
         </p>
-        <p style="margin-top: 12px;">
-          However, HIPAA compliance extends beyond technical controls. As a clinician,
-          you are responsible for the administrative and physical safeguards that apply
-          to your practice &mdash; things like workforce training, access management policies,
-          and your organization's privacy procedures. We strongly recommend consulting with
-          a HIPAA compliance specialist to ensure your overall workflow meets the requirements
-          for handling protected health information (PHI).
-        </p>
-        <p style="margin-top: 16px;">
-          <a href="https://docs.aws.amazon.com/artifact/latest/ug/managingagreements.html">
-            Enroll in the AWS BAA &rarr;
-          </a>
-        </p>
-        <p style="margin-top: 12px;">
-          <a href="hipaa.html">
-            Read the full HIPAA compliance guide &rarr;
-          </a>
-        </p>
-      </div>
-    </div>
-  </section>
-
-  <!-- Data Flow -->
-  <section id="data-flow">
-    <div class="container">
-      <h2>Where does your data go?</h2>
-      <p>Only two places: your computer and your AWS account.</p>
-      <div class="data-flow">
-        <div class="data-flow-node highlight">Your Desktop<br><small>Claria App</small></div>
-        <div class="data-flow-arrow">&harr;</div>
-        <div class="data-flow-node highlight">Your AWS Account<br><small>S3 + Bedrock</small></div>
-      </div>
-      <div class="data-flow-excluded">
-        Not through Claria's servers. Ever.
-      </div>
-    </div>
-  </section>
-
-  <!-- Download -->
-  <section id="download">
-    <div class="container">
-      <h2>Download Claria v0.10.0</h2>
-      <p>
-        Claria is free, open-source software. Download the app, and it will walk you
-        through setting up your AWS account and securing your environment step by step.
-      </p>
-      <div class="download-grid">
-        <a href="https://github.com/claria-ai/claria/releases/download/v0.10.0/Claria_0.10.0_aarch64.dmg" class="download-card macos-card">
-          <svg class="download-icon" viewBox="0 0 384 512" fill="currentColor"><path d="M318.7 268.7c-.2-36.7 16.4-64.4 50-84.8-18.8-26.9-47.2-41.7-84.7-44.6-35.5-2.8-74.3 20.7-88.5 20.7-15 0-49.4-19.7-76.4-19.7C63.3 141.2 4 184 4 273.5c0 26.2 4.8 53.3 14.4 81.2 12.8 36.7 59 126.7 107.2 125.2 25.2-.6 43-17.9 75.8-17.9 31.8 0 48.3 17.9 76.4 17.9 48.6-.7 90.4-82.5 102.6-119.3-65.2-30.7-61.7-90-61.7-91.9zm-56.6-164.2c27.3-32.4 24.8-61.9 24-72.5-24.1 1.4-52 16.4-67.9 34.9-17.5 19.8-27.8 44.3-25.6 71.9 26.1 2 49.9-11.4 69.5-34.3z"/></svg>
-          <strong>macOS</strong>
-          <span>Apple Silicon (.dmg)</span>
-          <span class="download-size">10.2 MB</span>
-          <span class="macos-beta-hint">See beta instructions below</span>
-        </a>
-        <a href="https://github.com/claria-ai/claria/releases/download/v0.10.0/Claria_0.10.0_x64-setup.exe" class="download-card">
-          <svg class="download-icon" viewBox="0 0 448 512" fill="currentColor"><path d="M0 93.7l183.6-25.3v177.4H0V93.7zm0 324.6l183.6 25.3V268.4H0v149.9zm203.8 28L448 480V268.4H203.8v177.9zm0-380.6v180.1H448V32L203.8 65.7z"/></svg>
-          <strong>Windows</strong>
-          <span>Installer (.exe)</span>
-          <span class="download-size">5.0 MB</span>
-        </a>
-        <a href="https://github.com/claria-ai/claria/releases/download/v0.10.0/Claria_0.10.0_x64_en-US.msi" class="download-card">
-          <svg class="download-icon" viewBox="0 0 448 512" fill="currentColor"><path d="M0 93.7l183.6-25.3v177.4H0V93.7zm0 324.6l183.6 25.3V268.4H0v149.9zm203.8 28L448 480V268.4H203.8v177.9zm0-380.6v180.1H448V32L203.8 65.7z"/></svg>
-          <strong>Windows</strong>
-          <span>MSI package (.msi)</span>
-          <span class="download-size">7.2 MB</span>
-        </a>
-      </div>
-      <p style="margin-top: 16px; font-size: 0.9rem; color: #8896a7;">
-        All releases are available on <a href="https://github.com/claria-ai/claria/releases">GitHub Releases</a>.
-      </p>
-
-      <details class="mac-note">
-        <summary>macOS users: opening Claria during the beta</summary>
         <p>
-          Claria is currently ad-hoc signed (no Apple Developer certificate).
-          macOS quarantines apps downloaded from the internet, so you may see
-          a warning that the app "can't be opened." This is a one-time fix.
+          This is not a generic AI tool. Claria understands the specific instruments
+          you use and generates structured clinical reports that match your practice.
         </p>
-        <p>Before opening the DMG, strip the quarantine attribute in Terminal:</p>
-        <pre><code>xattr -d com.apple.quarantine ~/Downloads/Claria_0.10.0_aarch64.dmg</code></pre>
-        <p>Then open the DMG and drag Claria to Applications. If you already copied it:</p>
-        <pre><code>xattr -cr /Applications/Claria.app</code></pre>
-        <p>
-          Proper Apple Developer signing and notarization is planned &mdash; this
-          workaround will go away in a future release.
-        </p>
-      </details>
-    </div>
-  </section>
+      </div>
+    </section>
 
-  <!-- Getting Started -->
-  <section id="getting-started" class="getting-started">
-    <div class="container">
-      <h2>Getting started</h2>
-      <p>
-        Once you install Claria, the app walks you through everything. You don't need
-        to be technical &mdash; the built-in setup wizard handles AWS configuration,
-        security settings, and HIPAA compliance for you.
-      </p>
+    <section id="screenshots">
+      <div class="container">
+        <h2>See Claria in action</h2>
 
-      <ol>
-        <li>
-          <h3>Install Claria and create an AWS account</h3>
-          <ul>
-            <li>The setup wizard guides you through creating your AWS account (~10 minutes)</li>
-            <li>You'll need an email address and a credit card</li>
-            <li>Claria configures encryption, access controls, and storage automatically</li>
-          </ul>
-        </li>
-        <li>
-          <h3>Secure your environment</h3>
-          <ul>
-            <li>Claria walks you through signing the AWS Business Associate Agreement for HIPAA</li>
-            <li>Enables encryption on all data at rest and in transit</li>
-            <li>Provisions a private S3 bucket that only your account can access</li>
-          </ul>
-        </li>
-        <li>
-          <h3>Upload your data to S3</h3>
-          <ul>
-            <li>Configure global inference rules and templates</li>
-            <li>Start a patient record with intake forms (PDF, scans, etc.)</li>
-            <li>Add patient-specific inference rules and templates</li>
-          </ul>
-        </li>
-        <li>
-          <h3>Generate reports</h3>
-          <ul>
-            <li>Select assessments and instruments</li>
-            <li>Review the cost estimate before anything runs</li>
-            <li>Generate, preview, edit, and export to DOCX or PDF</li>
-          </ul>
-        </li>
-      </ol>
-    </div>
-  </section>
+        <!-- Featured: AI Chat -->
+        <div class="screenshot-feature">
+          <img src="img/client-chat.png" alt="AI chat generating a clinical history from intake documents" loading="lazy"
+               data-carousel-title="AI-assisted clinical documentation"
+               data-carousel-desc="Ask the AI to build a developmental history, draft report sections, or analyze assessment results &mdash; all from documents already in the client record.">
+          <div class="screenshot-caption">
+            <strong>AI-assisted clinical documentation</strong>
+            <span>Ask the AI to build a developmental history, draft report sections, or analyze assessment results &mdash; all from documents already in the client record.</span>
+          </div>
+        </div>
 
-  <!-- Screenshots -->
-  <section id="screenshots">
-    <div class="container">
-      <h2>See Claria in action</h2>
+        <!-- Client management row -->
+        <div class="screenshot-grid two-up">
+          <figure class="screenshot-card">
+            <img src="img/clients.png" alt="Client list showing three clients" loading="lazy"
+                 data-carousel-title="Client list">
+            <figcaption>Client list</figcaption>
+          </figure>
+          <figure class="screenshot-card">
+            <img src="img/client-record.png" alt="Client record with uploaded files" loading="lazy"
+                 data-carousel-title="Client record with uploaded documents">
+            <figcaption>Client record with uploaded documents</figcaption>
+          </figure>
+        </div>
 
-      <!-- Featured: AI Chat -->
-      <div class="screenshot-feature">
-        <img src="img/client-chat.png" alt="AI chat generating a clinical history from intake documents" loading="lazy"
-             data-carousel-title="AI-assisted clinical documentation"
-             data-carousel-desc="Ask the AI to build a developmental history, draft report sections, or analyze assessment results &mdash; all from documents already in the client record.">
-        <div class="screenshot-caption">
-          <strong>AI-assisted clinical documentation</strong>
-          <span>Ask the AI to build a developmental history, draft report sections, or analyze assessment results &mdash; all from documents already in the client record.</span>
+        <!-- Voice memo row -->
+        <div class="screenshot-grid two-up">
+          <figure class="screenshot-card">
+            <img src="img/memo-recording.png" alt="Voice memo recording with live transcription" loading="lazy"
+                 data-carousel-title="Record voice memos with live on-device transcription">
+            <figcaption>Record voice memos with live on-device transcription</figcaption>
+          </figure>
+          <figure class="screenshot-card">
+            <img src="img/memo-review.png" alt="Review and edit transcribed memo before saving" loading="lazy"
+                 data-carousel-title="Review and edit before saving to the client record">
+            <figcaption>Review and edit before saving to the client record</figcaption>
+          </figure>
+        </div>
+
+        <!-- Settings & infrastructure row -->
+        <div class="screenshot-grid two-up">
+          <figure class="screenshot-card">
+            <img src="img/preferences.png" alt="Preferences page with system prompt, whisper models, and model selection" loading="lazy"
+                 data-carousel-title="Customize prompts, transcription models, and AI preferences">
+            <figcaption>Customize prompts, transcription models, and AI preferences</figcaption>
+          </figure>
+          <figure class="screenshot-card">
+            <img src="img/aws.png" alt="AWS resource management showing all resources in sync" loading="lazy"
+                 data-carousel-title="AWS infrastructure"
+                 data-carousel-desc="Encryption, audit logging, and access controls &mdash; all managed automatically.">
+            <figcaption>AWS infrastructure &mdash; encryption, audit logging, and access controls</figcaption>
+          </figure>
         </div>
       </div>
+    </section>
 
-      <!-- Client management row -->
-      <div class="screenshot-grid two-up">
-        <figure class="screenshot-card">
-          <img src="img/clients.png" alt="Client list showing three clients" loading="lazy"
-               data-carousel-title="Client list">
-          <figcaption>Client list</figcaption>
-        </figure>
-        <figure class="screenshot-card">
-          <img src="img/client-record.png" alt="Client record with uploaded files" loading="lazy"
-               data-carousel-title="Client record with uploaded documents">
-          <figcaption>Client record with uploaded documents</figcaption>
-        </figure>
+  </div>
+
+  <!-- Tab: How It Works (Workflow + Getting Started + Cost) -->
+  <div class="tab-panel" data-tab="how-it-works">
+
+    <section id="workflow">
+      <div class="container">
+        <h2>The report workflow</h2>
+        <p>From clinical inputs to finished document in five steps.</p>
+        <ol class="workflow-steps">
+          <li><span>Select assessments and clinical inputs</span></li>
+          <li><span>See a cost estimate before anything runs</span></li>
+          <li><span>Generate a structured report via Bedrock</span></li>
+          <li><span>Preview and edit in the app using templates</span></li>
+          <li><span>Export to DOCX or PDF</span></li>
+        </ol>
       </div>
+    </section>
 
-      <!-- Voice memo row -->
-      <div class="screenshot-grid two-up">
-        <figure class="screenshot-card">
-          <img src="img/memo-recording.png" alt="Voice memo recording with live transcription" loading="lazy"
-               data-carousel-title="Record voice memos with live on-device transcription">
-          <figcaption>Record voice memos with live on-device transcription</figcaption>
-        </figure>
-        <figure class="screenshot-card">
-          <img src="img/memo-review.png" alt="Review and edit transcribed memo before saving" loading="lazy"
-               data-carousel-title="Review and edit before saving to the client record">
-          <figcaption>Review and edit before saving to the client record</figcaption>
-        </figure>
+    <section id="getting-started" class="getting-started">
+      <div class="container">
+        <h2>Getting started</h2>
+        <p>
+          Once you install Claria, the app walks you through everything. You don't need
+          to be technical &mdash; the built-in setup wizard handles AWS configuration,
+          security settings, and HIPAA compliance for you.
+        </p>
+
+        <ol>
+          <li>
+            <h3>Install Claria and create an AWS account</h3>
+            <ul>
+              <li>The setup wizard guides you through creating your AWS account (~10 minutes)</li>
+              <li>You'll need an email address and a credit card</li>
+              <li>Claria configures encryption, access controls, and storage automatically</li>
+            </ul>
+          </li>
+          <li>
+            <h3>Secure your environment</h3>
+            <ul>
+              <li>Claria walks you through signing the AWS Business Associate Agreement for HIPAA</li>
+              <li>Enables encryption on all data at rest and in transit</li>
+              <li>Provisions a private S3 bucket that only your account can access</li>
+            </ul>
+          </li>
+          <li>
+            <h3>Upload your data to S3</h3>
+            <ul>
+              <li>Configure global inference rules and templates</li>
+              <li>Start a patient record with intake forms (PDF, scans, etc.)</li>
+              <li>Add patient-specific inference rules and templates</li>
+            </ul>
+          </li>
+          <li>
+            <h3>Generate reports</h3>
+            <ul>
+              <li>Select assessments and instruments</li>
+              <li>Review the cost estimate before anything runs</li>
+              <li>Generate, preview, edit, and export to DOCX or PDF</li>
+            </ul>
+          </li>
+        </ol>
       </div>
+    </section>
 
-      <!-- Settings & infrastructure row -->
-      <div class="screenshot-grid two-up">
-        <figure class="screenshot-card">
-          <img src="img/preferences.png" alt="Preferences page with system prompt, whisper models, and model selection" loading="lazy"
-               data-carousel-title="Customize prompts, transcription models, and AI preferences">
-          <figcaption>Customize prompts, transcription models, and AI preferences</figcaption>
-        </figure>
-        <figure class="screenshot-card">
-          <img src="img/aws.png" alt="AWS resource management showing all resources in sync" loading="lazy"
-               data-carousel-title="AWS infrastructure"
-               data-carousel-desc="Encryption, audit logging, and access controls &mdash; all managed automatically.">
-          <figcaption>AWS infrastructure &mdash; encryption, audit logging, and access controls</figcaption>
-        </figure>
+    <section id="cost">
+      <div class="container">
+        <h2>Cost transparency</h2>
+        <p>
+          You pay AWS directly. Claria shows you an estimate before every generation
+          so there are no surprises. Here's what the models cost:
+        </p>
+        <table class="cost-table">
+          <thead>
+            <tr>
+              <th>Model</th>
+              <th>Input</th>
+              <th>Output</th>
+              <th>Best for</th>
+            </tr>
+          </thead>
+          <tbody>
+            <tr>
+              <td>Claude Sonnet 4</td>
+              <td>$3 / 1M tokens</td>
+              <td>$15 / 1M tokens</td>
+              <td>Everyday reports</td>
+            </tr>
+            <tr>
+              <td>Claude Opus 4</td>
+              <td>$15 / 1M tokens</td>
+              <td>$75 / 1M tokens</td>
+              <td>Complex evaluations</td>
+            </tr>
+            <tr>
+              <td>Claude 3.5 Haiku</td>
+              <td>$0.80 / 1M tokens</td>
+              <td>$4 / 1M tokens</td>
+              <td>Quick drafts</td>
+            </tr>
+          </tbody>
+        </table>
+        <div class="cost-example">
+          <strong>Example:</strong> A typical psychological evaluation report generated with
+          Claude Sonnet 4 costs approximately <strong>$0.05&ndash;$0.15</strong>.
+          A complex multi-section evaluation with Claude Opus 4 might cost
+          <strong>$0.15&ndash;$0.50</strong>.
+        </div>
       </div>
-    </div>
-  </section>
+    </section>
 
-  <!-- Technical Details -->
-  <section id="technical">
-    <div class="container">
-      <h2>Technical details</h2>
-      <ul class="tech-list">
-        <li>Data is never sent to Claria's developers &mdash; the app is an interface to AWS services</li>
-        <li>You are always the owner of your AWS account</li>
-        <li>Patient data is stored encrypted in AWS S3</li>
-        <li>Built in Rust for memory safety and performance, using the official AWS SDK for Rust</li>
-        <li>9 focused, auditable crates &mdash; each one has a single responsibility</li>
-        <li>No telemetry, no usage stats, no download tracking</li>
-        <li>Everything is open source, including how we build the downloadable release</li>
-      </ul>
-      <p style="margin-top: 24px;">
-        <a href="https://github.com/claria-ai/claria">View the source on GitHub &rarr;</a>
-      </p>
-    </div>
-  </section>
+  </div>
 
-  <!-- FAQ -->
-  <section id="faq">
-    <div class="container">
-      <h2>Frequently asked questions</h2>
-      <details class="faq-item">
-        <summary>Is Claria a SaaS?</summary>
-        <p>No. Nothing is hosted for you. The app runs on your machine and connects directly to your own AWS account.</p>
-      </details>
-      <details class="faq-item">
-        <summary>Can Claria's developers see my data?</summary>
-        <p>No. Claria is not a middleman. Your data flows between your desktop and your AWS account. The developers never see it, and the app collects no telemetry or usage stats.</p>
-      </details>
-      <details class="faq-item">
-        <summary>Is this a chatbot?</summary>
-        <p>No. Claria produces structured clinical reports, not freeform conversation. The AI is used to analyze your documents and generate report sections that match your practice.</p>
-      </details>
-      <details class="faq-item">
-        <summary>How much does Claria cost?</summary>
-        <p>Claria itself is free and open source. You pay AWS directly for what you use &mdash; there is no recurring Claria fee or subscription. A typical report generation costs pennies.</p>
-      </details>
-      <details class="faq-item">
-        <summary>What is AWS?</summary>
-        <p>Amazon Web Services (AWS) is a cloud computing platform run by Amazon. Your Claria data is stored and processed in your own private AWS account, which only you control. Claria walks you through setting it up step by step &mdash; no technical experience required.</p>
-        <p>AWS Bedrock is the part of AWS that runs AI models like Claude &mdash; your data never leaves your account. Claria enables it for you automatically during setup.</p>
-      </details>
-    </div>
-  </section>
+  <!-- Tab: Security (HIPAA + Data Flow + Technical) -->
+  <div class="tab-panel" data-tab="security">
+
+    <section id="hipaa">
+      <div class="container">
+        <h2>HIPAA compliance</h2>
+        <div class="hipaa-callout">
+          <h3>Claria helps &mdash; but compliance is a shared responsibility</h3>
+          <p>
+            Claria provides the technical safeguards: encryption at rest and in transit,
+            audit logging via CloudTrail, versioned storage, and least-privilege access controls.
+            It also walks you through signing a Business Associate Agreement (BAA) with AWS,
+            which makes the services Claria uses HIPAA-eligible at no extra cost.
+          </p>
+          <p style="margin-top: 12px;">
+            However, HIPAA compliance extends beyond technical controls. As a clinician,
+            you are responsible for the administrative and physical safeguards that apply
+            to your practice &mdash; things like workforce training, access management policies,
+            and your organization's privacy procedures. We strongly recommend consulting with
+            a HIPAA compliance specialist to ensure your overall workflow meets the requirements
+            for handling protected health information (PHI).
+          </p>
+          <p style="margin-top: 16px;">
+            <a href="https://docs.aws.amazon.com/artifact/latest/ug/managingagreements.html">
+              Enroll in the AWS BAA &rarr;
+            </a>
+          </p>
+          <p style="margin-top: 12px;">
+            <a href="hipaa.html">
+              Read the full HIPAA compliance guide &rarr;
+            </a>
+          </p>
+        </div>
+      </div>
+    </section>
+
+    <section id="data-flow">
+      <div class="container">
+        <h2>Where does your data go?</h2>
+        <p>Only two places: your computer and your AWS account.</p>
+        <div class="data-flow">
+          <div class="data-flow-node highlight">Your Desktop<br><small>Claria App</small></div>
+          <div class="data-flow-arrow">&harr;</div>
+          <div class="data-flow-node highlight">Your AWS Account<br><small>S3 + Bedrock</small></div>
+        </div>
+        <div class="data-flow-excluded">
+          Not through Claria's servers. Ever.
+        </div>
+      </div>
+    </section>
+
+    <section id="technical">
+      <div class="container">
+        <h2>Technical details</h2>
+        <ul class="tech-list">
+          <li>Data is never sent to Claria's developers &mdash; the app is an interface to AWS services</li>
+          <li>You are always the owner of your AWS account</li>
+          <li>Patient data is stored encrypted in AWS S3</li>
+          <li>Built in Rust for memory safety and performance, using the official AWS SDK for Rust</li>
+          <li>9 focused, auditable crates &mdash; each one has a single responsibility</li>
+          <li>No telemetry, no usage stats, no download tracking</li>
+          <li>Everything is open source, including how we build the downloadable release</li>
+        </ul>
+        <p style="margin-top: 24px;">
+          <a href="https://github.com/claria-ai/claria">View the source on GitHub &rarr;</a>
+        </p>
+      </div>
+    </section>
+
+  </div>
+
+  <!-- Tab: Download (Download + FAQ) -->
+  <div class="tab-panel" data-tab="download">
+
+    <section id="download">
+      <div class="container">
+        <h2>Download Claria v0.10.0</h2>
+        <p>
+          Claria is free, open-source software. Download the app, and it will walk you
+          through setting up your AWS account and securing your environment step by step.
+        </p>
+        <div class="download-grid">
+          <a href="https://github.com/claria-ai/claria/releases/download/v0.10.0/Claria_0.10.0_aarch64.dmg" class="download-card macos-card">
+            <svg class="download-icon" viewBox="0 0 384 512" fill="currentColor"><path d="M318.7 268.7c-.2-36.7 16.4-64.4 50-84.8-18.8-26.9-47.2-41.7-84.7-44.6-35.5-2.8-74.3 20.7-88.5 20.7-15 0-49.4-19.7-76.4-19.7C63.3 141.2 4 184 4 273.5c0 26.2 4.8 53.3 14.4 81.2 12.8 36.7 59 126.7 107.2 125.2 25.2-.6 43-17.9 75.8-17.9 31.8 0 48.3 17.9 76.4 17.9 48.6-.7 90.4-82.5 102.6-119.3-65.2-30.7-61.7-90-61.7-91.9zm-56.6-164.2c27.3-32.4 24.8-61.9 24-72.5-24.1 1.4-52 16.4-67.9 34.9-17.5 19.8-27.8 44.3-25.6 71.9 26.1 2 49.9-11.4 69.5-34.3z"/></svg>
+            <strong>macOS</strong>
+            <span>Apple Silicon (.dmg)</span>
+            <span class="download-size">10.2 MB</span>
+            <span class="macos-beta-hint">See beta instructions below</span>
+          </a>
+          <a href="https://github.com/claria-ai/claria/releases/download/v0.10.0/Claria_0.10.0_x64-setup.exe" class="download-card">
+            <svg class="download-icon" viewBox="0 0 448 512" fill="currentColor"><path d="M0 93.7l183.6-25.3v177.4H0V93.7zm0 324.6l183.6 25.3V268.4H0v149.9zm203.8 28L448 480V268.4H203.8v177.9zm0-380.6v180.1H448V32L203.8 65.7z"/></svg>
+            <strong>Windows</strong>
+            <span>Installer (.exe)</span>
+            <span class="download-size">5.0 MB</span>
+          </a>
+          <a href="https://github.com/claria-ai/claria/releases/download/v0.10.0/Claria_0.10.0_x64_en-US.msi" class="download-card">
+            <svg class="download-icon" viewBox="0 0 448 512" fill="currentColor"><path d="M0 93.7l183.6-25.3v177.4H0V93.7zm0 324.6l183.6 25.3V268.4H0v149.9zm203.8 28L448 480V268.4H203.8v177.9zm0-380.6v180.1H448V32L203.8 65.7z"/></svg>
+            <strong>Windows</strong>
+            <span>MSI package (.msi)</span>
+            <span class="download-size">7.2 MB</span>
+          </a>
+        </div>
+        <p style="margin-top: 16px; font-size: 0.9rem; color: #8896a7;">
+          All releases are available on <a href="https://github.com/claria-ai/claria/releases">GitHub Releases</a>.
+        </p>
+
+        <details class="mac-note">
+          <summary>macOS users: opening Claria during the beta</summary>
+          <p>
+            Claria is currently ad-hoc signed (no Apple Developer certificate).
+            macOS quarantines apps downloaded from the internet, so you may see
+            a warning that the app "can't be opened." This is a one-time fix.
+          </p>
+          <p>Before opening the DMG, strip the quarantine attribute in Terminal:</p>
+          <pre><code>xattr -d com.apple.quarantine ~/Downloads/Claria_0.10.0_aarch64.dmg</code></pre>
+          <p>Then open the DMG and drag Claria to Applications. If you already copied it:</p>
+          <pre><code>xattr -cr /Applications/Claria.app</code></pre>
+          <p>
+            Proper Apple Developer signing and notarization is planned &mdash; this
+            workaround will go away in a future release.
+          </p>
+        </details>
+      </div>
+    </section>
+
+    <section id="faq">
+      <div class="container">
+        <h2>Frequently asked questions</h2>
+        <details class="faq-item">
+          <summary>Is Claria a SaaS?</summary>
+          <p>No. Nothing is hosted for you. The app runs on your machine and connects directly to your own AWS account.</p>
+        </details>
+        <details class="faq-item">
+          <summary>Can Claria's developers see my data?</summary>
+          <p>No. Claria is not a middleman. Your data flows between your desktop and your AWS account. The developers never see it, and the app collects no telemetry or usage stats.</p>
+        </details>
+        <details class="faq-item">
+          <summary>Is this a chatbot?</summary>
+          <p>No. Claria produces structured clinical reports, not freeform conversation. The AI is used to analyze your documents and generate report sections that match your practice.</p>
+        </details>
+        <details class="faq-item">
+          <summary>How much does Claria cost?</summary>
+          <p>Claria itself is free and open source. You pay AWS directly for what you use &mdash; there is no recurring Claria fee or subscription. A typical report generation costs pennies.</p>
+        </details>
+        <details class="faq-item">
+          <summary>What is AWS?</summary>
+          <p>Amazon Web Services (AWS) is a cloud computing platform run by Amazon. Your Claria data is stored and processed in your own private AWS account, which only you control. Claria walks you through setting it up step by step &mdash; no technical experience required.</p>
+          <p>AWS Bedrock is the part of AWS that runs AI models like Claude &mdash; your data never leaves your account. Claria enables it for you automatically during setup.</p>
+        </details>
+      </div>
+    </section>
+
+  </div>
 
   <!-- Footer -->
   <footer>
@@ -388,6 +406,44 @@
 
   <script>
   (function() {
+    // === Tab switching ===
+    var tabBtns = document.querySelectorAll(".tab-btn[data-tab]");
+    var tabPanels = document.querySelectorAll(".tab-panel[data-tab]");
+
+    function switchTab(name) {
+      tabBtns.forEach(function(btn) {
+        btn.classList.toggle("active", btn.getAttribute("data-tab") === name);
+      });
+      tabPanels.forEach(function(panel) {
+        panel.classList.toggle("active", panel.getAttribute("data-tab") === name);
+      });
+    }
+
+    tabBtns.forEach(function(btn) {
+      btn.addEventListener("click", function() {
+        var name = btn.getAttribute("data-tab");
+        switchTab(name);
+        history.replaceState(null, "", "#" + name);
+        window.scrollTo({ top: document.querySelector(".tab-bar").offsetTop, behavior: "smooth" });
+      });
+    });
+
+    // Handle hero CTA link to #download
+    document.querySelector(".hero .cta").addEventListener("click", function(e) {
+      e.preventDefault();
+      switchTab("download");
+      history.replaceState(null, "", "#download");
+      window.scrollTo({ top: document.querySelector(".tab-bar").offsetTop, behavior: "smooth" });
+    });
+
+    // Activate tab from URL hash on load
+    var hash = location.hash.replace("#", "");
+    var validTabs = ["features", "how-it-works", "security", "download"];
+    if (validTabs.indexOf(hash) !== -1) {
+      switchTab(hash);
+    }
+
+    // === Carousel ===
     var carousel = document.getElementById("carousel");
     var img = carousel.querySelector(".carousel-img");
     var title = carousel.querySelector(".carousel-title");
@@ -396,7 +452,6 @@
     var slides = [];
     var current = 0;
 
-    // Collect all carousel images
     document.querySelectorAll("[data-carousel-title]").forEach(function(el) {
       slides.push({
         src: el.src,
