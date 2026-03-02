@@ -279,7 +279,9 @@
 
       <!-- Featured: AI Chat -->
       <div class="screenshot-feature">
-        <img src="img/client-chat.png" alt="AI chat generating a clinical history from intake documents" loading="lazy">
+        <img src="img/client-chat.png" alt="AI chat generating a clinical history from intake documents" loading="lazy"
+             data-carousel-title="AI-assisted clinical documentation"
+             data-carousel-desc="Ask the AI to build a developmental history, draft report sections, or analyze assessment results &mdash; all from documents already in the client record.">
         <div class="screenshot-caption">
           <strong>AI-assisted clinical documentation</strong>
           <span>Ask the AI to build a developmental history, draft report sections, or analyze assessment results &mdash; all from documents already in the client record.</span>
@@ -289,11 +291,13 @@
       <!-- Client management row -->
       <div class="screenshot-grid two-up">
         <figure class="screenshot-card">
-          <img src="img/clients.png" alt="Client list showing three clients" loading="lazy">
+          <img src="img/clients.png" alt="Client list showing three clients" loading="lazy"
+               data-carousel-title="Client list">
           <figcaption>Client list</figcaption>
         </figure>
         <figure class="screenshot-card">
-          <img src="img/client-record.png" alt="Client record with uploaded files" loading="lazy">
+          <img src="img/client-record.png" alt="Client record with uploaded files" loading="lazy"
+               data-carousel-title="Client record with uploaded documents">
           <figcaption>Client record with uploaded documents</figcaption>
         </figure>
       </div>
@@ -301,11 +305,13 @@
       <!-- Voice memo row -->
       <div class="screenshot-grid two-up">
         <figure class="screenshot-card">
-          <img src="img/memo-recording.png" alt="Voice memo recording with live transcription" loading="lazy">
+          <img src="img/memo-recording.png" alt="Voice memo recording with live transcription" loading="lazy"
+               data-carousel-title="Record voice memos with live on-device transcription">
           <figcaption>Record voice memos with live on-device transcription</figcaption>
         </figure>
         <figure class="screenshot-card">
-          <img src="img/memo-review.png" alt="Review and edit transcribed memo before saving" loading="lazy">
+          <img src="img/memo-review.png" alt="Review and edit transcribed memo before saving" loading="lazy"
+               data-carousel-title="Review and edit before saving to the client record">
           <figcaption>Review and edit before saving to the client record</figcaption>
         </figure>
       </div>
@@ -313,11 +319,14 @@
       <!-- Settings & infrastructure row -->
       <div class="screenshot-grid two-up">
         <figure class="screenshot-card">
-          <img src="img/preferences.png" alt="Preferences page with system prompt, whisper models, and model selection" loading="lazy">
+          <img src="img/preferences.png" alt="Preferences page with system prompt, whisper models, and model selection" loading="lazy"
+               data-carousel-title="Customize prompts, transcription models, and AI preferences">
           <figcaption>Customize prompts, transcription models, and AI preferences</figcaption>
         </figure>
         <figure class="screenshot-card">
-          <img src="img/aws.png" alt="AWS resource management showing all resources in sync" loading="lazy">
+          <img src="img/aws.png" alt="AWS resource management showing all resources in sync" loading="lazy"
+               data-carousel-title="AWS infrastructure"
+               data-carousel-desc="Encryption, audit logging, and access controls &mdash; all managed automatically.">
           <figcaption>AWS infrastructure &mdash; encryption, audit logging, and access controls</figcaption>
         </figure>
       </div>
@@ -372,6 +381,84 @@
       <p>&copy; 2026 Claria. Open source under the <a href="https://github.com/claria-ai/claria">claria-ai</a> organization.</p>
     </div>
   </footer>
+
+  <!-- Carousel lightbox -->
+  <div id="carousel" class="carousel-overlay" hidden>
+    <div class="carousel-backdrop"></div>
+    <button class="carousel-close" aria-label="Close">&times;</button>
+    <button class="carousel-prev" aria-label="Previous">&#8249;</button>
+    <button class="carousel-next" aria-label="Next">&#8250;</button>
+    <div class="carousel-content">
+      <img class="carousel-img" src="" alt="">
+      <div class="carousel-caption">
+        <strong class="carousel-title"></strong>
+        <span class="carousel-desc"></span>
+      </div>
+      <div class="carousel-counter"></div>
+    </div>
+  </div>
+
+  <script>
+  (function() {
+    var carousel = document.getElementById("carousel");
+    var img = carousel.querySelector(".carousel-img");
+    var title = carousel.querySelector(".carousel-title");
+    var desc = carousel.querySelector(".carousel-desc");
+    var counter = carousel.querySelector(".carousel-counter");
+    var slides = [];
+    var current = 0;
+
+    // Collect all carousel images
+    document.querySelectorAll("[data-carousel-title]").forEach(function(el) {
+      slides.push({
+        src: el.src,
+        alt: el.alt,
+        title: el.getAttribute("data-carousel-title"),
+        desc: el.getAttribute("data-carousel-desc") || ""
+      });
+      el.style.cursor = "zoom-in";
+      el.addEventListener("click", function() {
+        open(slides.indexOf(
+          slides.find(function(s) { return s.src === el.src; })
+        ));
+      });
+    });
+
+    function show(i) {
+      current = (i + slides.length) % slides.length;
+      var s = slides[current];
+      img.src = s.src;
+      img.alt = s.alt;
+      title.textContent = s.title;
+      desc.innerHTML = s.desc;
+      desc.style.display = s.desc ? "" : "none";
+      counter.textContent = (current + 1) + " / " + slides.length;
+    }
+
+    function open(i) {
+      show(i);
+      carousel.hidden = false;
+      document.body.style.overflow = "hidden";
+    }
+
+    function close() {
+      carousel.hidden = true;
+      document.body.style.overflow = "";
+    }
+
+    carousel.querySelector(".carousel-backdrop").addEventListener("click", close);
+    carousel.querySelector(".carousel-close").addEventListener("click", close);
+    carousel.querySelector(".carousel-prev").addEventListener("click", function() { show(current - 1); });
+    carousel.querySelector(".carousel-next").addEventListener("click", function() { show(current + 1); });
+
+    document.addEventListener("keydown", function(e) {
+      if (carousel.hidden) return;
+      if (e.key === "Escape") close();
+      else if (e.key === "ArrowLeft") show(current - 1);
+      else if (e.key === "ArrowRight") show(current + 1);
+    });
+  })();
+  </script>
 
 </body>
 </html>
