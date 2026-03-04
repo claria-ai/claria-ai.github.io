@@ -598,6 +598,27 @@ a:hover {
   grid-template-columns: 1fr 1fr;
 }
 
+.screenshot-grid.three-up {
+  grid-template-columns: 1fr 1fr 1fr;
+}
+
+.screenshot-group {
+  margin-top: 40px;
+}
+
+.screenshot-group:first-child {
+  margin-top: 16px;
+}
+
+.screenshot-group-label {
+  font-size: 0.8rem;
+  font-weight: 600;
+  text-transform: uppercase;
+  letter-spacing: 0.08em;
+  color: #7a8a9e;
+  margin-bottom: 12px;
+}
+
 .screenshot-card {
   margin: 0;
 }
@@ -858,7 +879,8 @@ footer a {
     transform: rotate(90deg);
   }
 
-  .screenshot-grid.two-up {
+  .screenshot-grid.two-up,
+  .screenshot-grid.three-up {
     grid-template-columns: 1fr;
   }
 
