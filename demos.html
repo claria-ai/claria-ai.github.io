@@ -1,0 +1,166 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Claria &mdash; Video Demos</title>
+  <meta name="description" content="Watch Claria in action: AI chat, voice memos, client records, AWS infrastructure, and more.">
+  <link rel="stylesheet" href="style.css">
+  <style>
+    .demo-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 32px;
+      margin-top: 32px;
+    }
+    .demo-card {
+      border: 1px solid #d0d8e0;
+      border-radius: 8px;
+      overflow: hidden;
+      background: #f9fafb;
+    }
+    .demo-card video {
+      width: 100%;
+      display: block;
+      background: #1a2332;
+    }
+    .demo-card-body {
+      padding: 16px 20px;
+    }
+    .demo-card-body h3 {
+      margin-bottom: 4px;
+    }
+    .demo-card-body p {
+      font-size: 0.92rem;
+      color: #4b5c6e;
+      margin-bottom: 0;
+      line-height: 1.5;
+    }
+    .demo-hero {
+      border-bottom: 1px solid #e8ecf0;
+    }
+    .demo-featured {
+      margin-top: 32px;
+    }
+    .demo-featured .demo-card {
+      max-width: 100%;
+    }
+    .demo-back {
+      display: inline-block;
+      font-size: 0.92rem;
+      color: #1d5fa0;
+      text-decoration: none;
+      margin-bottom: 16px;
+    }
+    .demo-back:hover {
+      text-decoration: underline;
+    }
+    @media (max-width: 768px) {
+      .demo-grid {
+        grid-template-columns: 1fr;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <header class="hero demo-hero">
+    <div class="container">
+      <a href="index.html" class="demo-back">&larr; Back to Claria</a>
+      <h1>See Claria in Action</h1>
+      <p class="hero-sub">Short walkthroughs of the features that matter most to clinicians.</p>
+    </div>
+  </header>
+
+  <section>
+    <div class="container">
+
+      <!-- Featured: AI Chat -->
+      <div class="demo-featured">
+        <div class="demo-card">
+          <video controls preload="metadata" poster="">
+            <source src="videos/ai-chat.mp4" type="video/mp4">
+          </video>
+          <div class="demo-card-body">
+            <h3>AI-Assisted Clinical Documentation</h3>
+            <p>Ask the AI to build a developmental history, draft report sections, or analyze assessment results &mdash; all from documents already in the client record.</p>
+          </div>
+        </div>
+      </div>
+
+      <!-- Grid of demos -->
+      <div class="demo-grid">
+
+        <div class="demo-card">
+          <video controls preload="metadata">
+            <source src="videos/voice-memo.mp4" type="video/mp4">
+          </video>
+          <div class="demo-card-body">
+            <h3>Voice Memos</h3>
+            <p>Record session notes with live transcription powered by local Whisper inference. Review and edit before saving.</p>
+          </div>
+        </div>
+
+        <div class="demo-card">
+          <video controls preload="metadata">
+            <source src="videos/client-record.mp4" type="video/mp4">
+          </video>
+          <div class="demo-card-body">
+            <h3>Client Records</h3>
+            <p>Navigate to a client and see their files, records, and documents &mdash; all stored securely in your own AWS S3 bucket.</p>
+          </div>
+        </div>
+
+        <div class="demo-card">
+          <video controls preload="metadata">
+            <source src="videos/aws-infrastructure.mp4" type="video/mp4">
+          </video>
+          <div class="demo-card-body">
+            <h3>AWS Infrastructure</h3>
+            <p>See the full provisioning status of your HIPAA-compliant AWS resources: encryption, access control, audit trails, and versioning.</p>
+          </div>
+        </div>
+
+        <div class="demo-card">
+          <video controls preload="metadata">
+            <source src="videos/infra-chat.mp4" type="video/mp4">
+          </video>
+          <div class="demo-card-body">
+            <h3>Infrastructure Chat</h3>
+            <p>Ask questions about your AWS security configuration in plain English. The AI explains your encryption, access controls, and compliance status.</p>
+          </div>
+        </div>
+
+        <div class="demo-card">
+          <video controls preload="metadata">
+            <source src="videos/file-history.mp4" type="video/mp4">
+          </video>
+          <div class="demo-card-body">
+            <h3>File Version History</h3>
+            <p>Browse previous versions of any document and compare changes with a side-by-side diff. S3 versioning means nothing is ever lost.</p>
+          </div>
+        </div>
+
+        <div class="demo-card">
+          <video controls preload="metadata">
+            <source src="videos/preferences.mp4" type="video/mp4">
+          </video>
+          <div class="demo-card-body">
+            <h3>Preferences</h3>
+            <p>Configure prompts, transcription models, and your preferred AI model. Expand each section to customize Claria to your workflow.</p>
+          </div>
+        </div>
+
+      </div>
+
+    </div>
+  </section>
+
+  <footer>
+    <div class="container">
+      <p>&copy; 2026 Claria &mdash; <a href="https://github.com/claria-ai/claria">GitHub</a></p>
+    </div>
+  </footer>
+
+</body>
+</html>
