@@ -1,0 +1,170 @@
+/* HIPAA page-specific styles */
+.page-header {
+  padding: 64px 0 48px;
+  border-bottom: 1px solid #e8ecf0;
+}
+.page-header .back-link {
+  display: inline-block;
+  margin-bottom: 24px;
+  font-size: 0.9rem;
+  color: #4b5c6e;
+  text-decoration: none;
+}
+.page-header .back-link:hover {
+  color: #1d5fa0;
+}
+.page-header h1 {
+  margin-bottom: 16px;
+}
+.page-header .subtitle {
+  font-size: 1.1rem;
+  color: #4b5c6e;
+  max-width: 640px;
+}
+
+.compliance-table {
+  width: 100%;
+  border-collapse: collapse;
+  margin: 24px 0;
+  font-size: 0.92rem;
+}
+.compliance-table th,
+.compliance-table td {
+  text-align: left;
+  padding: 12px 16px;
+  border-bottom: 1px solid #e0e6ed;
+  vertical-align: top;
+}
+.compliance-table th {
+  background: #f4f7fa;
+  font-weight: 600;
+  color: #0f1b2d;
+  font-size: 0.82rem;
+  text-transform: uppercase;
+  letter-spacing: 0.04em;
+}
+.compliance-table td {
+  color: #374151;
+}
+.compliance-table td code {
+  font-family: "SF Mono", Menlo, Consolas, monospace;
+  font-size: 0.82rem;
+  background: #f4f7fa;
+  padding: 2px 6px;
+  border-radius: 3px;
+  color: #1a2332;
+}
+
+.callout {
+  border-radius: 8px;
+  padding: 24px 28px;
+  margin: 24px 0;
+}
+.callout p {
+  margin-bottom: 12px;
+}
+.callout p:last-child {
+  margin-bottom: 0;
+}
+.callout-blue {
+  background: #eaf2fb;
+  border: 1px solid #b8d4f0;
+  color: #1a3d6e;
+}
+.callout-blue strong {
+  color: #0f2847;
+}
+.callout-amber {
+  background: #fef8ee;
+  border: 1px solid #f0d8a8;
+  color: #6e4a0a;
+}
+.callout-amber strong {
+  color: #4a3005;
+}
+.callout-red {
+  background: #fef3f2;
+  border: 1px solid #f0bbb5;
+  color: #6e1a14;
+}
+.callout-red strong {
+  color: #4a0e0a;
+}
+
+.check-list {
+  list-style: none;
+  padding: 0;
+}
+.check-list li {
+  padding: 8px 0 8px 28px;
+  position: relative;
+  color: #374151;
+}
+.check-list li::before {
+  content: "\2713";
+  position: absolute;
+  left: 0;
+  color: #27854a;
+  font-weight: 700;
+}
+
+.responsibility-list {
+  list-style: none;
+  padding: 0;
+}
+.responsibility-list li {
+  padding: 8px 0 8px 28px;
+  position: relative;
+  color: #374151;
+}
+.responsibility-list li::before {
+  content: "\25CB";
+  position: absolute;
+  left: 0;
+  color: #1d5fa0;
+  font-weight: 700;
+}
+
+.cfr-ref {
+  font-size: 0.82rem;
+  color: #8896a7;
+}
+
+.two-col {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 24px;
+  margin-top: 24px;
+}
+.two-col-card {
+  background: #f4f7fa;
+  border: 1px solid #e0e6ed;
+  border-radius: 8px;
+  padding: 24px;
+}
+.two-col-card h3 {
+  margin-bottom: 12px;
+}
+.two-col-card ul {
+  padding-left: 20px;
+  color: #374151;
+}
+.two-col-card li {
+  margin-bottom: 6px;
+}
+
+@media (max-width: 768px) {
+  .page-header {
+    padding: 48px 0 32px;
+  }
+  .compliance-table {
+    font-size: 0.82rem;
+  }
+  .compliance-table th,
+  .compliance-table td {
+    padding: 10px 8px;
+  }
+  .two-col {
+    grid-template-columns: 1fr;
+  }
+}
