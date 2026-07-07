@@ -1,0 +1,25 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>{% block title %}{% endblock %}</title>
+  <meta name="description" content="{% block description %}{% endblock %}">
+  <link rel="stylesheet" href="style.css">
+{% block extra_head %}{% endblock %}
+</head>
+<body>
+
+{% block body %}{% endblock %}
+{% block footer %}
+  <!-- Footer -->
+  <footer>
+    <div class="container">
+      <p>&copy; {{ site.copyright_year }} Claria. Open source under the <a href="{{ site.github_url }}">claria-ai</a> organization.</p>
+    </div>
+  </footer>
+{% endblock %}
+{% block after_footer %}{% endblock %}
+
+</body>
+</html>

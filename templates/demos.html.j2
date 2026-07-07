@@ -1,16 +1,10 @@
-<!-- Generated from templates/demos.html.j2 — DO NOT EDIT. Edit claria.yml or the template and re-run build.py. -->
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Claria &mdash; Video Demos</title>
-  <meta name="description" content="Watch Claria in action: AI chat, voice memos, client records, AWS infrastructure, and more.">
-  <link rel="stylesheet" href="style.css">
+{% extends "base.html.j2" %}
+{% block title %}Claria &mdash; Video Demos{% endblock %}
+{% block description %}Watch Claria in action: AI chat, voice memos, client records, AWS infrastructure, and more.{% endblock %}
+{% block extra_head %}
   <link rel="stylesheet" href="static/demos.css">
-</head>
-<body>
-
+{% endblock %}
+{% block body %}
   <header class="hero demo-hero">
     <div class="container">
       <a href="index.html" class="demo-back">&larr; Back to Claria</a>
@@ -103,11 +97,11 @@
     </div>
   </section>
 
+{% endblock %}
+{% block footer %}
   <footer>
     <div class="container">
-      <p>&copy; 2026 Claria &mdash; <a href="https://github.com/claria-ai/claria">GitHub</a></p>
+      <p>&copy; {{ site.copyright_year }} Claria &mdash; <a href="{{ site.github_url }}">GitHub</a></p>
     </div>
   </footer>
-
-</body>
-</html>
+{% endblock %}

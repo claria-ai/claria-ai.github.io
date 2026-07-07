@@ -1,16 +1,10 @@
-<!-- Generated from templates/hipaa.html.j2 — DO NOT EDIT. Edit claria.yml or the template and re-run build.py. -->
-<!DOCTYPE html>
-<html lang="en">
-<head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>HIPAA Compliance &mdash; Claria</title>
-  <meta name="description" content="How Claria configures your AWS account for HIPAA compliance. Technical controls, clinician responsibilities, and the self-hosted compliance model.">
-  <link rel="stylesheet" href="style.css">
+{% extends "base.html.j2" %}
+{% block title %}HIPAA Compliance &mdash; Claria{% endblock %}
+{% block description %}How Claria configures your AWS account for HIPAA compliance. Technical controls, clinician responsibilities, and the self-hosted compliance model.{% endblock %}
+{% block extra_head %}
   <link rel="stylesheet" href="static/hipaa.css">
-</head>
-<body>
-
+{% endblock %}
+{% block body %}
   <!-- Header -->
   <header class="page-header">
     <div class="container">
@@ -389,12 +383,4 @@
     </div>
   </section>
 
-  <!-- Footer -->
-  <footer>
-    <div class="container">
-      <p>&copy; 2026 Claria. Open source under the <a href="https://github.com/claria-ai/claria">claria-ai</a> organization.</p>
-    </div>
-  </footer>
-
-</body>
-</html>
+{% endblock %}
