@@ -7,7 +7,7 @@ site:
   copyright_year: 2026
 
 release:
-  version: 0.18.0
+  version: 0.19.0
   # Artifact URLs are derived by build.py:
   #   {download_base}/v{version}/Claria_{version}_{suffix}
   download_base: https://github.com/claria-ai/claria/releases/download
@@ -15,17 +15,17 @@ release:
     - platform: macOS
       kind: Apple Silicon (.dmg)
       suffix: aarch64.dmg
-      size: 11.9 MB
+      size: 12.8 MB
       icon: apple
       card_class: macos-card
       beta_hint: See beta instructions below
     - platform: Windows
       kind: Installer (.exe)
       suffix: x64-setup.exe
-      size: 6.2 MB
+      size: 7.0 MB
       icon: windows
     - platform: Windows
       kind: MSI package (.msi)
       suffix: x64_en-US.msi
-      size: 9.0 MB
+      size: 10.0 MB
       icon: windows
