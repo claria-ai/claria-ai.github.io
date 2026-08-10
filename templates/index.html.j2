@@ -43,7 +43,7 @@
           Claria is built for <strong>psychologists</strong>
           and <strong>clinical practitioners</strong> who write evaluation reports.
           If your day involves psychological evaluations, behavioral assessments,
-          or progress reports, Claria was designed with your workflow in mind.
+          or progress reports, Claria was designed around that clinical work.
         </p>
         <p>
           This is not a generic AI tool. Claria understands the specific instruments
@@ -66,6 +66,20 @@
             <div class="screenshot-caption">
               <strong>AI-assisted clinical documentation</strong>
               <span>Ask the AI to build a developmental history, draft report sections, or analyze assessment results &mdash; all from documents already in the client record.</span>
+            </div>
+          </div>
+        </div>
+
+        <!-- Writer -->
+        <div class="screenshot-group">
+          <div class="screenshot-group-label">Report Writer</div>
+          <div class="screenshot-feature">
+            <img src="img/client-writing.png" alt="Claria Writer showing a proposed report change beside the complete accepted report" loading="lazy"
+                 data-carousel-title="Build and revise the complete report"
+                 data-carousel-desc="Ask Claria to read client records, answer questions, and propose precise report changes. Accept or reject each proposal, edit the report directly, revisit earlier revisions, and export a formatting-preserving Word document.">
+            <div class="screenshot-caption">
+              <strong>Build and revise the complete report</strong>
+              <span>Ask Claria to read client records, answer questions, and propose precise changes. You remain the reviewer: accept, reject, or edit before exporting to Word.</span>
             </div>
           </div>
         </div>
@@ -159,10 +173,10 @@
           <div class="screenshot-group-label">Settings</div>
           <div class="screenshot-grid two-up">
             <figure class="screenshot-card">
-              <img src="img/preferences.png" alt="Preferences page with transcription defaults, system prompt, and chat model selection" loading="lazy"
-                   data-carousel-title="Customize transcription defaults, prompts, and AI models"
-                   data-carousel-desc="Pick default language and speaker count for audio uploads, opt into Transcribe Medical for clinical vocabulary, enable English translation, and edit system prompts. Preferences sync to your S3 bucket so the same settings follow you across machines.">
-              <figcaption>Customize transcription defaults, prompts, and AI models</figcaption>
+              <img src="img/preferences.png" alt="Preferences page with managed Writer templates, transcription settings, prompts, and AI model controls" loading="lazy"
+                   data-carousel-title="Manage redacted templates and clinical defaults"
+                   data-carousel-desc="Keep a managed shelf of reusable redacted Word templates, choose transcription and on-device memo settings, edit prompts, and select AI models. Shared settings follow you across computers through your private S3 bucket.">
+              <figcaption>Manage redacted Writer templates, transcription, prompts, and AI models</figcaption>
             </figure>
           </div>
         </div>
@@ -171,20 +185,85 @@
 
   </div>
 
-  <!-- Tab: How It Works (Clinical Workflow + Getting Started + Cost) -->
+  <!-- Tab: How It Works (Clinical Process + Getting Started + Cost) -->
   <div class="tab-panel" data-tab="how-it-works">
 
-    <section id="workflow">
+    <section id="clinical-process">
       <div class="container">
-        <h2>The clinical workflow</h2>
-        <p>From uploaded documents to polished clinical writing in five steps.</p>
-        <ol class="workflow-steps">
-          <li><span>Upload clinical documents &mdash; PDF, Word, audio, and more</span></li>
-          <li><span>Chat with AI using your documents as context</span></li>
+        <h2>From records to report</h2>
+        <p>Move from source material to reviewed clinical writing in five clear steps.</p>
+        <ol class="clinical-steps">
+          <li><span>Upload clinical documents &mdash; PDF, Word, readable text, audio, and more</span></li>
+          <li><span>Ask questions using the client record as context</span></li>
           <li><span>Draft report sections, analyze assessments, or build histories</span></li>
-          <li><span>Edit and refine text directly in the client record</span></li>
-          <li><span>Record voice memos with on-device transcription</span></li>
+          <li><span>Review proposed changes and edit the complete report directly</span></li>
+          <li><span>Export a Word document, with template formatting when one was applied</span></li>
         </ol>
+      </div>
+    </section>
+
+    <section id="records-and-writing">
+      <div class="container">
+        <h2>How records become useful text</h2>
+        <p>
+          Claria keeps the original record and gives its AI tools readable text. The method
+          depends on what you upload, and generated text stays in your private S3 bucket.
+        </p>
+        <div class="explain-grid">
+          <article class="explain-card">
+            <h3>Readable text stays unchanged</h3>
+            <p>
+              Markdown, JSON, CSV, and other printable UTF-8 files are read directly, even
+              with a custom extension or no extension. Claria does not require renaming or
+              flattening structured text first.
+            </p>
+          </article>
+          <article class="explain-card">
+            <h3>PDF and Word become structured Markdown</h3>
+            <p>
+              Claria creates a text companion that preserves useful reading order, headings,
+              lists, tables, labels, and paragraph boundaries. The original PDF or DOCX
+              remains available in the record.
+            </p>
+          </article>
+          <article class="explain-card">
+            <h3>Audio becomes an editable transcript</h3>
+            <p>
+              Uploaded recordings can use Amazon Transcribe, while recorded voice memos can
+              be transcribed on your device. Transcripts can be corrected and their earlier
+              versions remain available.
+            </p>
+          </article>
+        </div>
+
+        <h2 class="section-subheading">Writing reports and using Word templates</h2>
+        <div class="explain-grid two-card">
+          <article class="explain-card">
+            <h3>Writer reads only what it needs</h3>
+            <p>
+              Writer can inspect files in the current client record, show which sources it
+              used, and propose focused changes beside the complete accepted report. You can
+              edit directly, inspect prior revisions, and restore an older version as a new
+              revision without erasing history.
+            </p>
+          </article>
+          <article class="explain-card">
+            <h3>Managed templates preserve Word formatting</h3>
+            <p>
+              Add redacted DOCX templates in Preferences, then choose one for a new Writer
+              session. Claria stores a managed template ID and display name rather than a
+              local path or original filename. Export retains the template package's fonts,
+              spacing, tables, headers, footers, images, styles, and page layout.
+            </p>
+          </article>
+        </div>
+        <div class="responsibility-note">
+          <strong>Before adding a template:</strong> remove patient names, dates of birth,
+          record numbers, and any other identifiers that do not belong in a reusable blank
+          template. Claria protects data in the configured AWS environment, but you remain
+          responsible for deciding what PHI is appropriate to upload and for reviewing every
+          report before use.
+        </div>
       </div>
     </section>
 
@@ -192,9 +271,11 @@
       <div class="container">
         <h2>Getting started</h2>
         <p>
-          Once you install Claria, the app walks you through everything. You don't need
-          to be technical &mdash; the built-in setup wizard handles AWS configuration,
-          security settings, and HIPAA compliance for you.
+          Amazon Web Services is powerful and complex, so cautious setup matters. Claria
+          provides step-by-step guidance for the AWS resources and technical safeguards it
+          uses. You do not need prior AWS expertise, but you should read each step, confirm
+          the BAA, and make sure your practice's administrative and physical safeguards are
+          also in place.
         </p>
 
         <ol>
@@ -203,13 +284,13 @@
             <ul>
               <li>The setup wizard guides you through creating your AWS account (~10 minutes)</li>
               <li>You'll need an email address and a credit card</li>
-              <li>Claria configures encryption, access controls, and storage automatically</li>
+              <li>Claria prepares encryption, access controls, private storage, and audit logging for your review</li>
             </ul>
           </li>
           <li>
             <h3>Secure your environment</h3>
             <ul>
-              <li>Claria walks you through signing the AWS Business Associate Agreement for HIPAA</li>
+              <li>Claria walks you through accepting the AWS Business Associate Agreement; you must confirm it covers the account you use</li>
               <li>Enables encryption on all data at rest and in transit</li>
               <li>Provisions a private S3 bucket that only your account can access</li>
             </ul>
@@ -218,7 +299,7 @@
             <h3>Add your first client</h3>
             <ul>
               <li>Create a client record and upload intake forms, reports, and session recordings</li>
-              <li>Claria accepts PDF, Microsoft Word, and most audio formats</li>
+              <li>Claria accepts PDF, Microsoft Word, readable UTF-8 text, and most audio formats</li>
               <li>Record voice memos with on-device transcription powered by Whisper</li>
             </ul>
           </li>
@@ -301,8 +382,8 @@
             you are responsible for the administrative and physical safeguards that apply
             to your practice &mdash; things like workforce training, access management policies,
             and your organization's privacy procedures. We strongly recommend consulting with
-            a HIPAA compliance specialist to ensure your overall workflow meets the requirements
-            for handling protected health information (PHI).
+            a HIPAA compliance specialist to ensure your overall policies and practices meet
+            the requirements for handling protected health information (PHI).
           </p>
           <p style="margin-top: 16px;">
             <a href="https://docs.aws.amazon.com/artifact/latest/ug/managingagreements.html">
@@ -420,8 +501,8 @@
         </details>
         <details class="faq-item">
           <summary>What is AWS?</summary>
-          <p>Amazon Web Services (AWS) is a cloud computing platform run by Amazon. Your Claria data is stored and processed in your own private AWS account, which only you control. Claria walks you through setting it up step by step &mdash; no technical experience required.</p>
-          <p>AWS Bedrock is the part of AWS that runs AI models like Claude &mdash; your data never leaves your account. Claria enables it for you automatically during setup.</p>
+          <p>Amazon Web Services (AWS) is a large cloud platform run by Amazon. Claria stores client records in a private S3 bucket and calls covered AWS services using credentials for an account you control. AWS has many settings, so Claria provides a guided setup and shows the state of the resources it relies on.</p>
+          <p>Amazon Bedrock is the managed AWS service that runs models such as Claude. Prompts and selected record text are processed by Bedrock under your AWS account; they are not routed through Claria's developers. Before using PHI, accept the AWS BAA, keep access limited, and verify that your organization's HIPAA safeguards are complete.</p>
         </details>
       </div>
     </section>

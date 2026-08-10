@@ -417,8 +417,8 @@ a:hover {
   font-family: "SF Mono", Menlo, Consolas, monospace;
 }
 
-/* === Workflow Steps === */
-.workflow-steps {
+/* === Clinical Steps === */
+.clinical-steps {
   display: flex;
   gap: 0;
   list-style: none;
@@ -427,7 +427,7 @@ a:hover {
   counter-reset: step;
 }
 
-.workflow-steps li {
+.clinical-steps li {
   flex: 1;
   text-align: center;
   padding: 20px 12px;
@@ -435,7 +435,7 @@ a:hover {
   counter-increment: step;
 }
 
-.workflow-steps li::before {
+.clinical-steps li::before {
   content: counter(step);
   display: block;
   width: 40px;
@@ -449,7 +449,7 @@ a:hover {
   margin: 0 auto 12px;
 }
 
-.workflow-steps li::after {
+.clinical-steps li::after {
   content: "";
   position: absolute;
   top: 40px;
@@ -460,14 +460,65 @@ a:hover {
   z-index: -1;
 }
 
-.workflow-steps li:last-child::after {
+.clinical-steps li:last-child::after {
   display: none;
 }
 
-.workflow-steps li span {
+.clinical-steps li span {
   font-size: 0.88rem;
   color: #374151;
   line-height: 1.4;
+}
+
+/* === Records and Writer explanations === */
+.explain-grid {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 18px;
+  margin-top: 28px;
+}
+
+.explain-grid.two-card {
+  grid-template-columns: repeat(2, 1fr);
+}
+
+.explain-card {
+  padding: 22px;
+  border: 1px solid #d9e1e8;
+  border-radius: 8px;
+  background: #f8fafc;
+}
+
+.explain-card h3 {
+  color: #0f1b2d;
+  line-height: 1.35;
+  margin-bottom: 10px;
+}
+
+.explain-card p {
+  margin: 0;
+  font-size: 0.94rem;
+  line-height: 1.6;
+  color: #4b5c6e;
+}
+
+.section-subheading {
+  margin-top: 48px;
+}
+
+.responsibility-note {
+  margin-top: 24px;
+  padding: 18px 22px;
+  border: 1px solid #e8c980;
+  border-radius: 8px;
+  background: #fff9e8;
+  color: #624b16;
+  font-size: 0.94rem;
+  line-height: 1.6;
+}
+
+.responsibility-note strong {
+  color: #49360e;
 }
 
 /* === Data Flow Diagram === */
@@ -849,16 +900,16 @@ footer a {
     grid-template-columns: repeat(2, 1fr);
   }
 
-  .workflow-steps {
+  .clinical-steps {
     flex-direction: column;
     gap: 0;
   }
 
-  .workflow-steps li::after {
+  .clinical-steps li::after {
     display: none;
   }
 
-  .workflow-steps li {
+  .clinical-steps li {
     text-align: left;
     display: flex;
     align-items: center;
@@ -866,9 +917,14 @@ footer a {
     padding: 12px 0;
   }
 
-  .workflow-steps li::before {
+  .clinical-steps li::before {
     margin: 0;
     flex-shrink: 0;
+  }
+
+  .explain-grid,
+  .explain-grid.two-card {
+    grid-template-columns: 1fr;
   }
 
   .data-flow {
