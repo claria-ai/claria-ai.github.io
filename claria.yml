@@ -7,7 +7,7 @@ site:
   copyright_year: 2026
 
 release:
-  version: 0.29.0
+  version: 0.30.0
   # Artifact URLs are derived by build.py:
   #   {download_base}/v{version}/Claria_{version}_{suffix}
   download_base: https://github.com/claria-ai/claria/releases/download
