@@ -52,3 +52,9 @@
     grid-template-columns: 1fr;
   }
 }
+.fun-note {
+  margin-top: 32px;
+  font-size: 0.92rem;
+  color: #4b5c6e;
+  text-align: center;
+}
