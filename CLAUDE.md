@@ -1,6 +1,6 @@
 # Build
 
-`index.html`, `hipaa.html`, and `demos.html` are GENERATED from `templates/*.html.j2` + `claria.yml` by `build.py`. Never hand-edit them, and never grep-and-replace version strings.
+`index.html`, `hipaa.html`, `demos.html`, and `fun.html` are GENERATED from `templates/*.html.j2` + `claria.yml` by `build.py`. Never hand-edit them, and never grep-and-replace version strings.
 
 Release bump (the only routine change):
 1. Edit `claria.yml`: `release.version` and each artifact's `size`.
